@@ -64,16 +64,15 @@
       >
         <ul class="flex flex-col items-center w-full justify-center align-middle text-center font-bold text-gray-50">
           <li bind:this={pocetna} class="text-3xl tracking-tighter p-4 w-full">
-            <a on:click={() => isMenuOpen = false}
+            <a class="hover:text-gray-300" on:click={() => isMenuOpen = false}
               href="/"
             >
               Kupuj
             </a>
           </li>
           <li bind:this={onama} class="tracking-tighter text-3xl p-4 w-full">
-            <a on:click={() => isMenuOpen = false}
+            <a class="hover:text-gray-300" on:click={() => isMenuOpen = false}
               href="/"
-              class="nav-link"
             >
               Moj Profil
             </a>
@@ -81,7 +80,7 @@
           <li bind:this={otkup} class="text-3xl tracking-tighter p-4 w-full">
             <a on:click={() => isMenuOpen = false}
               href="/"
-              class="nav-link"
+              class="hover:text-gray-300"
             >
               Craftko
             </a>
@@ -89,7 +88,7 @@
           <li bind:this={zbrinjavanje} class="text-3xl tracking-tighter p-4 w-full">
             <a on:click={() => isMenuOpen = false}
               href="/"
-              class="nav-link"
+              class="hover:text-gray-300"
             >
               Q & A
             </a>
@@ -97,7 +96,7 @@
           <li bind:this={kontakt} class="text-3xl p-4 tracking-tighter w-full">
             <a on:click={() => isMenuOpen = false}
               href="/"
-              class="nav-link"
+              class="hover:text-gray-300"
             >
               Kontakt
             </a>
