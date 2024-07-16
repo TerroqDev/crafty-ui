@@ -57,4 +57,11 @@
             <button class="border rounded-md px-10 py-8 text-2xl lg:text-3xl bg-yellow-500 text-gray-50">Razgovaraj sa Craftkom</button>
         </div>
     </div>
+    <hr class="w-16 h-2 mx-auto mt-16 bg-primary" />
+    <div>
+        <h2 class="text-center text-3xl lg:text-4xl px-4 py-16 text-gray-600">Zelis prodavati na CRAFTY-u?</h2>
+        <div class="flex justify-center">
+            <button class="border rounded-md px-10 py-8 text-2xl lg:text-3xl bg-primary text-gray-50">Izradi profil prodavatelja</button>
+        </div>
+    </div>
 </div>
