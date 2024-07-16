@@ -40,7 +40,7 @@
             </div>
         </div>
         <div bind:this={tematika} class="p-4 lg:mx-10 lg:w-72">
-            <div class="flex bg-[url('tematika.jpg')] justify-center bg-cover border border-gray-100 p-16 py-28 shadow-md rounded-md">
+            <div class="flex bg-[url('/tematika.jpg')] justify-center bg-cover border border-gray-100 p-16 py-28 shadow-md rounded-md">
                 <h1 class="text-center font-bold text-3xl text-gray-50">TEMATIKA</h1>
             </div>
         </div>
