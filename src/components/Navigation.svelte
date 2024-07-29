@@ -72,7 +72,7 @@
           </li>
           <li bind:this={onama} class="tracking-tighter text-3xl p-4 w-full">
             <a class="hover:text-gray-300" on:click={() => isMenuOpen = false}
-              href="/"
+              href="/prijava"
             >
               Moj Profil
             </a>
