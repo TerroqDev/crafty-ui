@@ -12,7 +12,7 @@
         data = await response.json()
         if(data){
             // @ts-ignore
-            user.set(data.email)
+            user.set({email: data.email, picture: data.picture});
         }else{
             console.log("no data")
         }

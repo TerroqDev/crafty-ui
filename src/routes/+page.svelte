@@ -12,7 +12,26 @@
         username = value;
     })
 
-    let heading, callToAction, materijal, tematika, ostalo;
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let heading
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let callToAction
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let materijal 
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let tematika 
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let ostalo;
     onMount(() => {
         inView(heading, () => {
             animate(heading, {opacity: [0, 1]}, {easing: "ease-in"})
