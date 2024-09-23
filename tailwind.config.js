@@ -9,7 +9,12 @@ export default {
             },
             colors: {
                 primary: "#1585db",
-                secondary: "#d1a214"
+                secondary: "#d1a214",
+                accent: "#ec7658",
+                nprimary: "#ee5029",
+                nsecondary: "#dfcd3b",
+                background: "#F8EEE1",
+                nbackground: "#FBB04C"
             }
         },
   },
