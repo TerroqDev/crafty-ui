@@ -49,6 +49,20 @@
 	 */
     let kraftkoButton;
 
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let craftedItHeading;
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let craftedItSubheading;
+
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let craftedItButton;
+
     onMount(() => {
         if(username!== undefined){
             loggedIn = true;
@@ -80,6 +94,17 @@
         })
         inView(kraftkoButton, () => {
             animate(kraftkoButton, {opacity: [0, 1]}, {easing: "ease-in", duration: 0.7})
+        })
+
+
+        inView(craftedItSubheading, () => {
+            animate(craftedItSubheading, {opacity: [0, 1], y:[20,0 ]}, {easing: "ease-in", duration: 0.5})
+        })
+        inView(craftedItHeading, () => {
+            animate(craftedItHeading, {opacity: [0, 1]}, {easing: "ease-in", duration: 0.7})
+        })
+        inView(craftedItButton, () => {
+            animate(craftedItButton, {opacity: [0, 1]}, {easing: "ease-in", duration: 0.6})
         })
     })
 </script>
@@ -141,10 +166,10 @@
     <div class="px-4 md:px-48 bg-gray-50">
         <div class="flex flex-col w-full">
             <div class="bg-gray-100 my-28 rounded-xl px-8 py-10">
-                <h2 class="text-gray-600 text-center text-2xl pt-4">#ICraftedIt</h2>
-                <h1 class="text-gray-700 text-3xl md:text-8xl text-center font-extrabold py-10">Pregledajte našu <br/> kreativnu ponudu!</h1>
+                <h2 bind:this={craftedItSubheading} class="text-gray-600 text-center text-2xl pt-4">#ICraftedIt</h2>
+                <h1 bind:this={craftedItHeading} class="text-gray-700 text-3xl md:text-8xl text-center font-extrabold py-10">Pregledajte našu <br/> kreativnu ponudu!</h1>
                 <div class="text-center pt-8 pb-4 md:pt-20">
-                    <button class="px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-gray-600 text-gray-50 font-bold min-w-80 hover:bg-gray-500">Shop Now</button>
+                    <button bind:this={craftedItButton} class="px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-gray-600 text-gray-50 font-bold min-w-80 hover:bg-gray-500 transition-all transform duration-300 ease-in">Shop Now</button>
                 </div>
             </div>
         </div>
