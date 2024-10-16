@@ -1,3 +1,1 @@
-<div>
-    Postavke
-</div>
+<div>Postavke</div>

@@ -42,9 +42,13 @@
 				<div class="flex flex-col justify-center pl-4">
 					<h1 class="text-xl text-primary">Valentin Vareskic</h1>
 					<h2 class="text-gray-500 text-sm">{username}</h2>
-                    <div>
-                        <button on:click={logout} class="mt-2 py-2 px-3 border border-secondary text-secondary font-medium rounded">Logout</button>
-                    </div>
+					<div>
+						<button
+							on:click={logout}
+							class="mt-2 py-2 px-3 border border-secondary text-secondary font-medium rounded"
+							>Logout</button
+						>
+					</div>
 				</div>
 			</div>
 			<div class="flex">
@@ -58,7 +62,9 @@
 					<li><a class="py-1 text-nowrap" href="/prijava/statistika">Statistika</a></li>
 					<li><a class="py-1" href="/prijava/recenzije">Recenzije</a></li>
 				</ul>
-				<div class="flex w-full mt-1 ml-1 flex-col justify-between p-8 shadow rounded border border-gray-100">
+				<div
+					class="flex w-full mt-1 ml-1 flex-col justify-between p-8 shadow rounded border border-gray-100"
+				>
 					<slot />
 				</div>
 			</div>

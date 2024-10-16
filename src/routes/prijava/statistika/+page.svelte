@@ -1,3 +1,1 @@
-<div>
-    Statistika
-</div>
+<div>Statistika</div>

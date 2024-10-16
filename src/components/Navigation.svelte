@@ -31,8 +31,7 @@
 		>
 			<h1>Crafty</h1>
 		</a>
-		<div class="min-w-24 hidden md:max-[4200px]:block">
-		</div>
+		<div class="min-w-24 hidden md:max-[4200px]:block"></div>
 		<button
 			name="Contact call to action"
 			class={`m-4 flex top-0 right-0 z-50 relative w-10 h-10 text-textcol focus:outline-none`}
@@ -67,7 +66,9 @@
 			class="flex flex-col items-center w-full justify-center align-middle text-center font-bold text-gray-500"
 		>
 			<li bind:this={pocetna} class="text-3xl tracking-tighter p-4 w-full">
-				<a class="hover:text-gray-600" on:click={() => (isMenuOpen = false)} href="/kupuj"> Kupuj </a>
+				<a class="hover:text-gray-600" on:click={() => (isMenuOpen = false)} href="/kupuj">
+					Kupuj
+				</a>
 			</li>
 			<li bind:this={onama} class="tracking-tighter text-3xl p-4 w-full">
 				<a class="hover:text-gray-600" on:click={() => (isMenuOpen = false)} href="/prijava">

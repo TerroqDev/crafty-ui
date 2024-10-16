@@ -1,3 +1,1 @@
-<div>
-    Oglasi
-</div>
+<div>Oglasi</div>
