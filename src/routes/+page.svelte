@@ -131,7 +131,7 @@
 {:else}
     <div class="md:px-48">
         <h1 bind:this={tagHeading} class="text-2xl text-center text-gray-600 pt-8">Trazis nesto u ovoj kategoriji?</h1>
-        <div bind:this={tagList} class="flex flex-col md:flex-row gap-16 md:gap-36 justify-center pt-8 md:pt-16">
+        <div bind:this={tagList} class="flex flex-col md:flex-row gap-16 md:gap-36 justify-center pt-8 px-16 md:pt-16">
             <div class="mx-auto">
                 <div class="border bg-gray-200 w-60 h-60 md:w-80 md:h-80 flex flex-col justify-center rounded-full hover:bg-gray-100 transition-all transform duration-300 ease-in">
                     <h1 class="p-4 text-xl text-gray-600 text-center">Lorem Ipsum</h1>

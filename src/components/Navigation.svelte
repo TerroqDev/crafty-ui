@@ -67,7 +67,7 @@
 			class="flex flex-col items-center w-full justify-center align-middle text-center font-bold text-gray-500"
 		>
 			<li bind:this={pocetna} class="text-3xl tracking-tighter p-4 w-full">
-				<a class="hover:text-gray-600" on:click={() => (isMenuOpen = false)} href="/"> Kupuj </a>
+				<a class="hover:text-gray-600" on:click={() => (isMenuOpen = false)} href="/kupuj"> Kupuj </a>
 			</li>
 			<li bind:this={onama} class="tracking-tighter text-3xl p-4 w-full">
 				<a class="hover:text-gray-600" on:click={() => (isMenuOpen = false)} href="/prijava">
