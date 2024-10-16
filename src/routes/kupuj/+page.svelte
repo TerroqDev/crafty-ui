@@ -19,7 +19,7 @@
 				</p>
 			</div>
 			<div
-				class={`px-4 transform transition-all duration-300 overflow-hidden ${isPriceOpen ? 'max-h-0 ' : 'max-h-40'} `}
+				class={`px-2 transform transition-all duration-300 overflow-hidden ${isPriceOpen ? 'max-h-0 ' : 'max-h-40'} `}
 			>
 				<RangeSlider
 					{formatter}
