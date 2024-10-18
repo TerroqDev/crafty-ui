@@ -79,7 +79,7 @@
 				<a on:click={() => (isMenuOpen = false)} href="/" class="hover:text-gray-600"> Craftko </a>
 			</li>
 			<li bind:this={zbrinjavanje} class="text-3xl tracking-tighter p-4 w-full">
-				<a on:click={() => (isMenuOpen = false)} href="/" class="hover:text-gray-600"> Q & A </a>
+				<a on:click={() => (isMenuOpen = false)} href="/qa" class="hover:text-gray-600"> Q & A </a>
 			</li>
 			<li bind:this={kontakt} class="text-3xl p-4 tracking-tighter w-full">
 				<a on:click={() => (isMenuOpen = false)} href="/" class="hover:text-gray-600"> Kontakt </a>
