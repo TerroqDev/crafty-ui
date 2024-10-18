@@ -51,7 +51,6 @@
 			<div class="mx-4 pt-4">
 				<p class="text-gray-600 font-semibold flex justify-between">
 					Size <span class="cursor-pointer" on:click={() => (isSizeOpen = !isSizeOpen)}>
-
 						<div class="relative w-3 h-3 cursor-pointer group mt-2">
 							<!-- Vertical line -->
 							<div
@@ -63,7 +62,7 @@
 								class={`absolute top-1/2 left-0 w-full h-[2px] bg-gray-600 transform -translate-y-1/2 transition-transform duration-300 ease-out ${isSizeOpen ? 'rotate-180' : ''} `}
 							></div>
 						</div>
-                        </span>
+					</span>
 				</p>
 			</div>
 			<div
@@ -86,7 +85,6 @@
 			<div class="mx-4 pt-4">
 				<p class="text-gray-600 font-semibold flex justify-between">
 					Color <span class="cursor-pointer" on:click={() => (isColorOpen = !isColorOpen)}>
-
 						<div class="relative w-3 h-3 cursor-pointer group mt-2">
 							<!-- Vertical line -->
 							<div
@@ -98,7 +96,7 @@
 								class={`absolute top-1/2 left-0 w-full h-[2px] bg-gray-600 transform -translate-y-1/2 transition-transform duration-300 ease-out ${isColorOpen ? 'rotate-180' : ''} `}
 							></div>
 						</div>
-                        </span>
+					</span>
 				</p>
 			</div>
 			<div
