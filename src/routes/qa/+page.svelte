@@ -1,13 +1,25 @@
 <script>
-	let isFirstQuestionOpen = false;
-	let isSecondQuestionOpen = false;
-	let isThirdQuestionOpen = false;
-	let isFourthQuestionOpen = false;
-	let isFifthQuestion = false;
-	let isSixthQuestion = false;
-	let isSeventhQuestion = false;
-	let isEightQuestion = false;
-
+	import { animate, inView } from "motion";
+	import { onMount } from "svelte";
+    
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let questionEl = [];
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let faq;
+    onMount(() => {
+        inView(faq, () => {
+            animate(faq, {opacity: [0, 1]}, {duration: 0.7, delay: 0.1})
+        })
+        for (let i = 0; i < questionAndAnswers.length; i++) {
+            inView(questionEl[i], () => {
+                animate(questionEl[i], {opacity: [0, 1], y:[100, 0] }, {duration: 0.7, delay: i*0.1})
+            })
+        } 
+    })
 	let questionAndAnswers = [
 		{
 			question: 'Kako postaviti oglas na vašu stranicu?',
@@ -61,9 +73,9 @@
 </script>
 
 <div class="px-4 md:px-48 min-h-screen">
-	<h1 class="pt-8 text-4xl text-center text-gray-700">F.A.Q.</h1>
-	{#each questionAndAnswers as question}
-		<div class="pt-4">
+	<h1 bind:this={faq} class="pt-8 text-4xl text-center text-gray-700">F.A.Q.</h1>
+	{#each questionAndAnswers as question, i}
+		<div bind:this={questionEl[i]} class="pt-4">
 			<button
 				class="flex w-full justify-between"
 				on:click={() => (question.isOpen = !question.isOpen)}

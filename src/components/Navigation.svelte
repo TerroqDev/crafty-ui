@@ -18,8 +18,6 @@
 		}
 		isMenuOpen = !isMenuOpen;
 	}
-
-	onMount(() => {});
 </script>
 
 <nav class="px-4 md:px-20 lg:px-48 bg-gray-50">
