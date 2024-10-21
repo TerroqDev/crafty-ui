@@ -72,7 +72,7 @@
 	];
 </script>
 
-<div class="px-4 md:px-48 min-h-screen">
+<div class="px-4 md:px-48 min-h-screen pb-8">
 	<h1 bind:this={faq} class="pt-8 text-4xl text-center text-gray-700">F.A.Q.</h1>
 	{#each questionAndAnswers as question, i}
 		<div bind:this={questionEl[i]} class="pt-4">
