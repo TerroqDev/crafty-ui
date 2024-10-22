@@ -32,7 +32,7 @@
     <div class="md:hidden flex justify-center pt-8">
         <img src={Plane} alt="Plane">
     </div>
-    <div class="h-full w-full pt-8">
+    <div class="h-full w-full py-8">
         <h1 class="pt-8 font-bold text-2xl text-gray-600 text-center">Ako imate pitanja pogledajte nas <a class="underline" href="/qa">F.A.Q.</a> ili nas kontaktirajte.</h1>
     </div>
 </div>
