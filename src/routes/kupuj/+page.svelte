@@ -41,6 +41,7 @@
 			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-06.jpg'
 		}
 	];
+    $: filteredProducts = productData.filter(product=> product.price >= values[0] && product.price <= values[1]);
 	const minPrice = productData.reduce(
 		(min, item) => (item.price < min ? item.price : min),
 		productData[0].price
@@ -170,7 +171,7 @@
 			<div
 				class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 pt-2"
 			>
-				{#each productData as product}
+				{#each filteredProducts as product}
 					<a href="/kupuj" class="group">
 						<div
 							class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
