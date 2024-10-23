@@ -1,25 +1,25 @@
 <script>
-	import { animate, inView } from "motion";
-	import { onMount } from "svelte";
-    
-    /**
+	import { animate, inView } from 'motion';
+	import { onMount } from 'svelte';
+
+	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-    let questionEl = [];
-    /**
+	let questionEl = [];
+	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-    let faq;
-    onMount(() => {
-        inView(faq, () => {
-            animate(faq, {opacity: [0, 1]}, {duration: 0.7, delay: 0.1})
-        })
-        for (let i = 0; i < questionAndAnswers.length; i++) {
-            inView(questionEl[i], () => {
-                animate(questionEl[i], {opacity: [0, 1], y:[100, 0] }, {duration: 0.7, delay: i*0.1})
-            })
-        } 
-    })
+	let faq;
+	onMount(() => {
+		inView(faq, () => {
+			animate(faq, { opacity: [0, 1] }, { duration: 0.7, delay: 0.1 });
+		});
+		for (let i = 0; i < questionAndAnswers.length; i++) {
+			inView(questionEl[i], () => {
+				animate(questionEl[i], { opacity: [0, 1], y: [100, 0] }, { duration: 0.7, delay: i * 0.1 });
+			});
+		}
+	});
 	let questionAndAnswers = [
 		{
 			question: 'Kako postaviti oglas na vašu stranicu?',

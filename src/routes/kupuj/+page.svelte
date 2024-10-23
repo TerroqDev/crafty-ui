@@ -3,11 +3,54 @@
 	const currency = new Intl.NumberFormat('de', { style: 'currency', currency: 'EUR' });
 	// @ts-ignore
 	const formatter = (value) => currency.format(value);
-	let values = [35, 85];
 
 	let isPriceOpen = true;
 	let isColorOpen = true;
 	let isSizeOpen = true;
+
+	let productData = [
+		{
+			name: 'Eather Bottle',
+			price: 48,
+			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-01.jpg'
+		},
+
+		{
+			name: 'Nomad Tumbler',
+			price: 35,
+			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-02.jpg'
+		},
+		{
+			name: 'Focus Paper Refill',
+			price: 89,
+			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-03.jpg'
+		},
+		{
+			name: 'Machined Mechanical Pencil',
+			price: 35,
+			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-04.jpg'
+		},
+		{
+			name: 'Notes',
+			price: 12,
+			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-05.jpg'
+		},
+		{
+			name: 'Stack of boxes',
+			price: 35,
+			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-06.jpg'
+		}
+	];
+	const minPrice = productData.reduce(
+		(min, item) => (item.price < min ? item.price : min),
+		productData[0].price
+	);
+	const maxPrice = productData.reduce(
+		(max, item) => (item.price > max ? item.price : max),
+		productData[0].price
+	);
+	let values = [minPrice, maxPrice];
+	$: console.log(values);
 </script>
 
 <div class=" ">
@@ -40,8 +83,8 @@
 					range
 					pips
 					all="label"
-					min={35}
-					max={85}
+					min={minPrice}
+					max={maxPrice}
 					step={1}
 					pipstep={50000}
 					bind:values
@@ -127,85 +170,21 @@
 			<div
 				class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 pt-2"
 			>
-				<a href="#" class="group">
-					<div
-						class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
-					>
-						<img
-							src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-01.jpg"
-							alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
-							class="h-full w-full object-cover object-center group-hover:opacity-75"
-						/>
-					</div>
-					<h3 class="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
-					<p class="mt-1 text-lg font-medium text-gray-900">$48</p>
-				</a>
-				<a href="#" class="group">
-					<div
-						class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
-					>
-						<img
-							src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-02.jpg"
-							alt="Olive drab green insulated bottle with flared screw lid and flat top."
-							class="h-full w-full object-cover object-center group-hover:opacity-75"
-						/>
-					</div>
-					<h3 class="mt-4 text-sm text-gray-700">Nomad Tumbler</h3>
-					<p class="mt-1 text-lg font-medium text-gray-900">$35</p>
-				</a>
-				<a href="#" class="group">
-					<div
-						class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
-					>
-						<img
-							src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-03.jpg"
-							alt="Person using a pen to cross a task off a productivity paper card."
-							class="h-full w-full object-cover object-center group-hover:opacity-75"
-						/>
-					</div>
-					<h3 class="mt-4 text-sm text-gray-700">Focus Paper Refill</h3>
-					<p class="mt-1 text-lg font-medium text-gray-900">$89</p>
-				</a>
-				<a href="#" class="group">
-					<div
-						class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
-					>
-						<img
-							src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-04.jpg"
-							alt="Hand holding black machined steel mechanical pencil with brass tip and top."
-							class="h-full w-full object-cover object-center group-hover:opacity-75"
-						/>
-					</div>
-					<h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
-					<p class="mt-1 text-lg font-medium text-gray-900">$35</p>
-				</a>
-
-				<a href="#" class="group">
-					<div
-						class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
-					>
-						<img
-							src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-05.jpg"
-							alt="Hand holding black machined steel mechanical pencil with brass tip and top."
-							class="h-full w-full object-cover object-center group-hover:opacity-75"
-						/>
-					</div>
-					<h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
-					<p class="mt-1 text-lg font-medium text-gray-900">$35</p>
-				</a>
-				<a href="#" class="group">
-					<div
-						class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
-					>
-						<img
-							src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-06.jpg"
-							alt="Hand holding black machined steel mechanical pencil with brass tip and top."
-							class="h-full w-full object-cover object-center group-hover:opacity-75"
-						/>
-					</div>
-					<h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
-					<p class="mt-1 text-lg font-medium text-gray-900">$35</p>
-				</a>
+				{#each productData as product}
+					<a href="/kupuj" class="group">
+						<div
+							class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
+						>
+							<img
+								src={product.imgUrl}
+								alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+								class="h-full w-full object-cover object-center group-hover:opacity-75"
+							/>
+						</div>
+						<h3 class="mt-4 text-sm text-gray-700">{product.name}</h3>
+						<p class="mt-1 text-lg font-medium text-gray-900">${product.price}</p>
+					</a>
+				{/each}
 				<!-- More products... -->
 			</div>
 		</div>
