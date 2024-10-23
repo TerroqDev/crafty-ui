@@ -1,4 +1,6 @@
 <script>
+	import { animate, inView } from 'motion';
+	import { onMount } from 'svelte';
 	import RangeSlider from 'svelte-range-slider-pips';
 	import { fade } from 'svelte/transition';
 	const currency = new Intl.NumberFormat('de', { style: 'currency', currency: 'EUR' });
@@ -42,7 +44,9 @@
 			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-06.jpg'
 		}
 	];
-    $: filteredProducts = productData.filter(product=> product.price >= values[0] && product.price <= values[1]);
+	$: filteredProducts = productData.filter(
+		(product) => product.price >= values[0] && product.price <= values[1]
+	);
 	const minPrice = productData.reduce(
 		(min, item) => (item.price < min ? item.price : min),
 		productData[0].price
@@ -53,11 +57,30 @@
 	);
 	let values = [minPrice, maxPrice];
 	$: console.log(values);
+
+	/**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+	let filters;
+	/**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+	let mainSection;
+
+	onMount(() => {
+		inView(filters, () => {
+			animate(filters, { x: [-100, 0], opacity: [0, 1] }, { duration: 0.7 });
+		});
+
+		inView(mainSection, () => {
+			animate(mainSection, { opacity: [0, 1] }, { duration: 1 });
+		});
+	});
 </script>
 
 <div class=" ">
 	<div class="flex">
-		<div class="hidden md:flex md:flex-col pt-8 min-w-52 px-4 ml-14">
+		<div bind:this={filters} class="hidden md:flex md:flex-col pt-8 min-w-52 px-4 ml-14">
 			<h1 class="text-xl text-gray-600 mx-4 py-4 border-b border-gray-600 font-bold">Filter by</h1>
 			<div class="mx-4 pt-4">
 				<p class="text-gray-600 font-semibold flex justify-between">
@@ -162,7 +185,7 @@
 			</div>
 			<hr class="bg-gray-600 mx-4 mt-4" />
 		</div>
-		<div class="w-full py-8 px-4 md:pr-48">
+		<div bind:this={mainSection} class="w-full py-8 px-4 md:pr-48">
 			<h1 class="text-4xl text-gray-600 font-bold">All products</h1>
 			<p class="text-gray-500">This section should describe the products</p>
 			<div class="flex justify-between pt-10">
@@ -173,8 +196,9 @@
 				class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 pt-2"
 			>
 				{#each filteredProducts as product}
-					<a  href="/kupuj" class="group">
-						<div transition:fade 
+					<a href="/kupuj" class="group">
+						<div
+							transition:fade
 							class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
 						>
 							<img
