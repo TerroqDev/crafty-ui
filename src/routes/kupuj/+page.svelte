@@ -13,32 +13,38 @@
 
 	let productData = [
 		{
+			id: 1,
 			name: 'Eather Bottle',
 			price: 48,
 			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-01.jpg'
 		},
 
 		{
+			id: 2,
 			name: 'Nomad Tumbler',
 			price: 35,
 			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-02.jpg'
 		},
 		{
+			id: 3,
 			name: 'Focus Paper Refill',
 			price: 89,
 			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-03.jpg'
 		},
 		{
+			id: 4,
 			name: 'Machined Mechanical Pencil',
 			price: 35,
 			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-04.jpg'
 		},
 		{
+			id: 5,
 			name: 'Notes',
 			price: 12,
 			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-05.jpg'
 		},
 		{
+			id: 6,
 			name: 'Stack of boxes',
 			price: 35,
 			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-06.jpg'
@@ -196,7 +202,7 @@
 				class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 pt-2"
 			>
 				{#each filteredProducts as product}
-					<a href="/kupuj" class="group">
+					<a href="/kupuj/{product.id}" class="group">
 						<div
 							transition:fade
 							class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
