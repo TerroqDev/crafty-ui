@@ -91,6 +91,6 @@
 		</div>
 	</div>
 </div>
-<div class="bg-gray-800 text-gray-50">
+<div class="bg-gray-800 text-gray-100">
 	<p class="py-1 px-4 md:px-48 text-center text-sm">Sva prava pridrzana, CRAFTY d.o.o.</p>
 </div>
