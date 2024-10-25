@@ -50,7 +50,7 @@
 		<div class="pt-4 md:pt-16 px-4">
 			<h1 class="text-lg font-bold text-primary">Pratite nas</h1>
 			<div class="flex gap-2 pt-4">
-				<div class="max-w-8">
+				<div class="max-w-8 cursor-pointer">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						x="0px"
@@ -65,7 +65,7 @@
 						></path>
 					</svg>
 				</div>
-				<div class="max-w-8">
+				<div class="max-w-8 cursor-pointer">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						x="0px"

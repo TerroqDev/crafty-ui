@@ -122,7 +122,7 @@
 			<svg
 				aria-hidden="true"
 				viewBox="0 0 418 42"
-				class="absolute left-0 top-2/3 h-[0.58em] w-full fill-background"
+				class="absolute left-0 top-2/3 h-[0.58em] w-full fill-primary"
 				preserveAspectRatio="none"
 			>
 				<path
@@ -211,7 +211,7 @@
 		<div class="flex justify-center py-20 w-full text-center">
 			<button
 				bind:this={tagButton}
-				class="flex justify-center px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-gray-600 text-gray-50 font-bold min-w-80 hover:bg-gray-500 transition-all transform duration-300 ease-in"
+				class="flex justify-center px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-primary text-gray-50 font-bold min-w-80 hover:bg-primary/85 transition-all transform duration-300 ease-in"
 				>VIŠE
 				<svg class="w-12 pl-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
 					><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
@@ -237,7 +237,7 @@
 		<div class="text-center pt-64">
 			<button
 				bind:this={kraftkoButton}
-				class="px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-gray-600 text-gray-50 font-bold min-w-80 hover:bg-gray-500 transition-all transform duration-300 ease-in"
+				class="px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-primary text-gray-50 font-bold min-w-80 hover:bg-primary/85 transition-all transform duration-300 ease-in"
 				>KLIKNI OVDJE</button
 			>
 		</div>
@@ -257,7 +257,7 @@
 				<div class="text-center pt-8 pb-4 md:pt-20">
 					<button
 						bind:this={craftedItButton}
-						class="px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-gray-600 text-gray-50 font-bold min-w-80 hover:bg-gray-500 transition-all transform duration-300 ease-in"
+						class="px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-primary text-gray-50 font-bold min-w-80 hover:bg-primary/85 transition-all transform duration-300 ease-in"
 						>Shop Now</button
 					>
 				</div>
