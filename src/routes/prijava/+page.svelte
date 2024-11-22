@@ -13,16 +13,16 @@
 	let updateInstagram = $ctx.instagram;
 	let updateWhatsApp = $ctx.whatsapp;
 
-    /**
+	/**
 	 * @param {{ key: any; }} e
 	 */
-    function exitEditMode(e) {
-        switch(e.key) {
-            case "Escape":
-                editMode = true;
-                break;
-        }
-    }
+	function exitEditMode(e) {
+		switch (e.key) {
+			case 'Escape':
+				editMode = true;
+				break;
+		}
+	}
 
 	async function updateUserData() {
 		if (updateFirstName === $ctx.firstName && updateLastName === ctx.lastName) {
@@ -54,7 +54,6 @@
 </script>
 
 <div class="flex pt-8 h-full">
-	<div class="flex flex-col w-full">
-	</div>
+	<div class="flex flex-col w-full"></div>
 </div>
 <svelte:window on:keydown|preventDefault={exitEditMode} />

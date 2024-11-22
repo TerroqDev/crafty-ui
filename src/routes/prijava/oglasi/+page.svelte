@@ -1,2 +1,1 @@
-<div class="flex flex-col w-full">
-</div>
+<div class="flex flex-col w-full"></div>
