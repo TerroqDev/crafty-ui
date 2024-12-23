@@ -32,7 +32,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tailwindcss/language-server": "^0.0.27",
 		"motion": "^10.18.0",
+		"svelte-language-server": "^0.17.7",
 		"svelte-range-slider-pips": "^3.1.1"
 	}
 }

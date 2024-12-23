@@ -91,13 +91,13 @@
 				</div>
 			</div>
 			<div class="flex pt-8">
-				<ul class="flex gap-4 w-full border-b mt-1 text-gray-600 text-sm font-medium pb-1">
-					<li><a class={`border-gray-700 pb-1 px-2 ${href==="/prijava" ? "border-b" : ""} `} href="/prijava">Moj profil</a></li>
-					<li><a class={`border-gray-700 pb-1  ${href.includes("/postavke") ? "border-b" : ""} `} href="/prijava/postavke">Postavke</a></li>
-					<li><a class={`border-gray-700 pb-1  ${href.includes("/oglasi") ? "border-b" : ""} `} href="/prijava/oglasi">Moji oglasi</a></li>
-					<li><a class={`border-gray-700 pb-1  ${href.includes("/unesioglas") ? "border-b" : ""} `} href="/prijava/unesioglas">Unesi oglas</a></li>
-					<li><a class={`border-gray-700 pb-1  ${href.includes("/statistika") ? "border-b" : ""} `} href="/prijava/statistika">Statistika</a></li>
-					<li><a class={`border-gray-700 pb-1 px-2 ${href.includes("/recenzije") ? "border-b" : ""} `} href="/prijava/recenzije">Recenzije</a></li>
+				<ul class="flex gap-4 w-full text-gray-600 text-md font-medium border-b pb-1">
+					<li><a class={`border-gray-700 pb-1 px-2 ${href==="/prijava" ? "text-yellow-500" : ""} `} href="/prijava">Moj profil</a></li>
+					<li><a class={`border-gray-700 pb-1  ${href.includes("/postavke") ? "text-yellow-500" : ""} `} href="/prijava/postavke">Postavke</a></li>
+					<li><a class={`border-gray-700 pb-1  ${href.includes("/oglasi") ? "text-yellow-500" : ""} `} href="/prijava/oglasi">Moji oglasi</a></li>
+					<li><a class={`border-gray-700 pb-1  ${href.includes("/unesioglas") ? "text-yellow-500" : ""} `} href="/prijava/unesioglas">Unesi oglas</a></li>
+					<li><a class={`border-gray-700 pb-1  ${href.includes("/statistika") ? "text-yellow-500" : ""} `} href="/prijava/statistika">Statistika</a></li>
+					<li><a class={`border-gray-700 pb-1 px-2 ${href.includes("/recenzije") ? "text-yellow-500" : ""} `} href="/prijava/recenzije">Recenzije</a></li>
 				</ul>
 			</div>
 			<div class="flex w-full min-h-[50vh] mt-1 ml-1 flex-col justify-between">
