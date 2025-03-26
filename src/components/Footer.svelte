@@ -1,4 +1,4 @@
-<div class="bg-gray-700 text-gray-100 md:px-80">
+<div class="bg-gray-700 text-gray-100 md:px-40">
 	<div class="grid grid-cols-1 pb-8 md:grid-cols-4 gap-4">
 		<div class="px-4 pt-8">
 			<a href="/" class="">
