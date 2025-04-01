@@ -2,7 +2,6 @@
 	let isMenuOpen = false;
 	import { browser } from '$app/environment';
 	import { animate } from 'motion';
-	import Logo from '$lib/assets/crafty_logo.svg';
 
 	$: if (browser) document.body.classList.toggle('noscroll', isMenuOpen);
 	let pocetna, onama, otkup, zbrinjavanje, kontakt;

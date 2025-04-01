@@ -1,11 +1,26 @@
 <script>
 	/** @type {import('./$types').PageData} */
 	// @ts-ignore
-	import { getContext } from 'svelte';
-    import { page } from '$app/stores';
+	import { getContext, onMount } from 'svelte';
+	import { page } from '$app/stores';
 	/** @type string */
 	let username;
 	$: username;
+
+	/**
+	 * @type {HTMLLIElement}
+	 */
+	let firstElement;
+
+	onMount(() => {
+		elWidth = firstElement.clientWidth;
+		leftPosition = firstElement.offsetLeft;
+	});
+
+	/**
+	 * @type {number}
+	 */
+	let elWidth;
 
 	/**
 	 * @type string
@@ -20,13 +35,20 @@
 			//username = value.email;
 			(picture = value.picture);
 	});
-    $: href = $page.url.pathname;
+	$: href = $page.url.pathname;
+	let leftPosition;
+
+	function updateWidth(event) {
+		elWidth = event.currentTarget.clientWidth;
+		leftPosition = event.currentTarget.offsetLeft;
+	}
+
 	async function logout() {
 		await fetch('http://localhost:8000/clear', { credentials: 'include' });
 	}
 </script>
 
-<div class="px-4 md:px-20 lg:px-48 xl:px-96">
+<div class="px-4 md:px-20 lg:px-48">
 	{#if !username}
 		<h1 class="text-center text-3xl lg:text-5xl text-primary pt-16">Prijavite se</h1>
 		<div class="flex justify-center pt-16">
@@ -92,10 +114,29 @@
 			</div>
 			<div class="flex pt-8">
 				<ul class="flex gap-4 w-full text-gray-600 text-md font-medium border-b pb-1">
-					<li><a class={`border-gray-700 pb-1 px-2 ${href==="/prijava" ? "text-yellow-500" : ""} `} href="/prijava">Moj profil</a></li>
-					<li><a class={`border-gray-700 pb-1  ${href.includes("/oglasi") ? "text-yellow-500" : ""} `} href="/prijava/oglasi">Moji oglasi</a></li>
-					<li><a class={`border-gray-700 pb-1  ${href.includes("/unesioglas") ? "text-yellow-500" : ""} `} href="/prijava/unesioglas">Unesi oglas</a></li>
+					<li bind:this={firstElement} on:click={updateWidth}>
+						<a
+							class={`border-gray-700 pb-1 px-2 ${href === '/prijava' ? 'text-yellow-500' : ''} `}
+							href="/prijava">Moj profil</a
+						>
+					</li>
+					<li on:click={updateWidth}>
+						<a
+							class={`border-gray-700 pb-1  ${href.includes('/oglasi') ? 'text-yellow-500' : ''} `}
+							href="/prijava/oglasi">Moji oglasi</a
+						>
+					</li>
+					<li on:click={updateWidth}>
+						<a
+							class={`border-gray-700 pb-1  ${href.includes('/unesioglas') ? 'text-yellow-500' : ''} `}
+							href="/prijava/unesioglas">Unesi oglas</a
+						>
+					</li>
 				</ul>
+				<span
+					class="absolute h-1 bg-yellow-500 mt-6 transition-all ease-in duration-300"
+					style="width: {elWidth}px; left: {leftPosition}px"
+				/>
 			</div>
 			<div class="flex w-full min-h-[50vh] mt-1 ml-1 flex-col justify-between">
 				<slot />

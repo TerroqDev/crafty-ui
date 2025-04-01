@@ -5,9 +5,9 @@
 	let price;
 </script>
 
-<div class="flex flex-col w-full">
+<div class="flex flex-col border shadow my-2 w-full">
 	<div class="flex py-2">
-		<div class="w-3/5 py-4 px-6 bg-gray-50 rounded-xl mr-2 border border-gray-300">
+		<div class="w-3/5 py-4 px-6 rounded-xl mr-2">
 			<h1 class="text-xl">Generalne informacije</h1>
 			<h2 class="pt-4">Ime proizvoda:</h2>
 			<div class="py-3 w-full">
@@ -22,7 +22,7 @@
 				<input class="p-2 rounded w-full" />
 			</div>
 		</div>
-		<div class="bg-gray-50 rounded-xl w-2/5 ml-2 px-6 border border-gray-300">
+		<div class=" rounded-xl w-2/5 ml-2 px-6">
 			<h1 class="pt-4 text-xl">Slike</h1>
 			<div class="py-4 px-1">
 				<img class="rounded-xl" src="https://dummyimage.com/600x400/000/fff" alt="Dummy" />
@@ -41,7 +41,7 @@
 		</div>
 	</div>
 	<div class="flex py-2">
-		<div class="w-3/5 py-4 px-6 bg-gray-50 border border-gray-300 rounded-lg mr-2">
+		<div class="w-3/5 py-4 px-6 rounded-lg mr-2">
 			<h1 class="text-xl">Cijena:</h1>
 			<h2 class="pt-4">Osnovna cijena</h2>
 			<div class="py-3 w-full">
@@ -52,7 +52,7 @@
 				<input placeholder="1" class="p-2 rounded w-full" />
 			</div>
 		</div>
-		<div class="bg-gray-50 w-2/5 ml-2 px-6 border border-gray-300 rounded-xl">
+		<div class=" w-2/5 ml-2 px-6 rounded-xl">
 			<h1 class="pt-4 text-xl">Kategorija</h1>
 			<h2 class="pt-4">Odaberi kategoriju</h2>
 			<div class="py-3">
