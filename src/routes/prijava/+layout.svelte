@@ -44,7 +44,7 @@
 	}
 
 	async function logout() {
-		await fetch('/clear', { credentials: 'include' });
+		await fetch('/api/clear', { credentials: 'include' });
 	}
 </script>
 
@@ -53,7 +53,7 @@
 		<h1 class="text-center text-3xl lg:text-5xl text-primary pt-16">Prijavite se</h1>
 		<div class="flex justify-center pt-16">
 			<button class="bg-yellow-500 text-gray-50 py-3 px-8"
-				><a href="/auth">Google</a></button
+				><a href="/api/auth">Google</a></button
 			>
 		</div>
 	{:else}
