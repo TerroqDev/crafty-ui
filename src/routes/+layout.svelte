@@ -9,13 +9,13 @@
 	setContext('user', user);
 	onMount(async () => {
 		if (data) {
-			const response = await fetch('https://crafty-service.why-ai.net/test');
+			const response = await fetch('http://crafty-service.why-ai.net/test');
 			const responseData = await response.json();
 			if (responseData) {
 				// @ts-ignore
-				const fetchUser = await fetch(`https://crafty-service.why-ai.net/users/${responseData.email}`);
+				const fetchUser = await fetch(`http://crafty-service.why-ai.net/users/${responseData.email}`);
 				if (fetchUser.status === 404) {
-					const createUser = await fetch(`https://crafty-service.why-ai.net/users/`, {
+					const createUser = await fetch(`http://crafty-service.why-ai.net/users/`, {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'
