@@ -60,7 +60,7 @@
 			<p class="text-gray-500">Vase ime i prezime</p>
 		</div>
 		<div class="flex gap-4 items-center">
-			<p class="font-semibold text-gray-600">Valentin Vareskic</p>
+			<p class="font-semibold text-gray-600">Valentin Vareškić</p>
 			<div>
 				<button class="text-yellow-500">Promjeni</button>
 			</div>
