@@ -158,7 +158,7 @@
 				type="text"
 				name="text"
 				id="text"
-				placeholder="Pretrazi"
+				placeholder="Pretraži"
 				class="form-input rounded border border-gray-600 p-4 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-14 focus:outline-none"
 			/>
 		</label>
@@ -177,7 +177,7 @@
 {:else}
 	<div class="md:px-48">
 		<h1 bind:this={tagHeading} class="text-2xl text-center text-gray-600 pt-8">
-			Trazis nesto u ovoj kategoriji?
+			Tražiš nesto u ovoj kategoriji?
 		</h1>
 		<div
 			bind:this={tagList}
