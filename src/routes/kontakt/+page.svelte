@@ -56,16 +56,16 @@
 
 <div class="px-4 md:px-52 min-h-[calc(100vh-100px)]">
 	<h1 bind:this={contactEl} class="text-gray-600 font-extrabold text-4xl md:text-9xl pt-8 md:pt-24">
-		Contact
+		Kontakt
 	</h1>
 	<div class="flex gap-8 pt-8 md:pt-24 md:pb-28">
 		<div class="w-full">
 			<div bind:this={mailEl}>
-				<h2 class="text-xl text-gray-600 uppercase font-bold">Posaljite mail</h2>
+				<h2 class="text-xl text-gray-600 uppercase font-bold">Pošaljite mail</h2>
 				<p class="text-gray-500 pt-2 text-2xl underline">crafty.support@gmail.com</p>
 			</div>
 			<div bind:this={socialEl}>
-				<h2 class="text-xl text-gray-600 uppercase font-bold pt-8">Drustvene mreze</h2>
+				<h2 class="text-xl text-gray-600 uppercase font-bold pt-8">Društvene mreže</h2>
 				<div class="flex gap-2">
 					<div class="max-w-16">
 						<svg

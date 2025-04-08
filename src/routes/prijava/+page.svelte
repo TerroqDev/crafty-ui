@@ -57,7 +57,7 @@
 	<div class="flex w-full justify-between gap-16 py-4 border-b">
 		<div class="flex flex-col">
 			<p class="font-bold text-gray-600">Ime</p>
-			<p class="text-gray-500">Vase ime i prezime</p>
+			<p class="text-gray-500">Vaše ime i prezime</p>
 		</div>
 		<div class="flex gap-4 items-center">
 			<p class="font-semibold text-gray-600">Valentin Vareškić</p>
@@ -69,7 +69,7 @@
 	<div class="flex w-full gap-24 py-4 border-b justify-between">
 		<div class="flex flex-col">
 			<p class="font-bold text-gray-600">Slika</p>
-			<p class="text-gray-500">Slika koju cemo prikazati na vasem profilu</p>
+			<p class="text-gray-500">Slika koju ćemo prikazati na vašem profilu</p>
 		</div>
 		<div class="flex gap-4 items-center">
 			<div class="flex flex-col justify-center">
@@ -109,7 +109,7 @@
 	<div class="flex w-full justify-between gap-16 py-4 border-b">
 		<div class="flex flex-col">
 			<p class="font-bold text-gray-600">Email</p>
-			<p class="text-gray-500">Email koji ce te koristiti u komunikaciji</p>
+			<p class="text-gray-500">Email koji ćete koristiti u komunikaciji</p>
 		</div>
 		<div class="flex gap-4 items-center">
 			<p class="font-semibold text-gray-600">valentin.vareskic@gmail.com</p>

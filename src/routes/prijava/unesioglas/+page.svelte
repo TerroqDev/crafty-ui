@@ -17,7 +17,7 @@
 			<div class="py-3">
 				<textarea rows="4" class="w-full rounded p-2" />
 			</div>
-			<h2>Kljucne rijeci:</h2>
+			<h2>Ključne riječi:</h2>
 			<div class="py-3 w-full">
 				<input class="p-2 rounded w-full" />
 			</div>
@@ -47,7 +47,7 @@
 			<div class="py-3 w-full">
 				<input bind:value={price} class="p-2 rounded w-full" placeholder="€" />
 			</div>
-			<h2>Kolicina</h2>
+			<h2>Količina</h2>
 			<div class="py-3 w-full">
 				<input placeholder="1" class="p-2 rounded w-full" />
 			</div>

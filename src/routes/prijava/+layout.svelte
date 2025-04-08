@@ -31,7 +31,7 @@
 	const ctx = getContext('user');
 
 	ctx.subscribe((/** @type {{ email: string; picture: string; }} */ value) => {
-		(username = 'Valentin Vareskic'),
+		(username = 'Valentin Vareškić'),
 			//username = value.email;
 			(picture = value.picture);
 	});
@@ -90,7 +90,7 @@
 						>
 					</div>
 					<div class="flex flex-col justify-center pl-4">
-						<h1 class="text-xl text-primary">Valentin Vareskic</h1>
+						<h1 class="text-xl text-primary">Valentin Vareškić</h1>
 						<h2 class="text-gray-500 text-sm">{username}</h2>
 						<div>
 							<button
