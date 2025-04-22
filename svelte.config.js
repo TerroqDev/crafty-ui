@@ -10,10 +10,10 @@ const config = {
 			fallback: 'index.html'
 		}),
 		paths: {
-			base: '',
-		  },
+			base: ''
+		}
 	},
-	preprocess: vitePreprocess(),
+	preprocess: vitePreprocess()
 };
 
 export default config;

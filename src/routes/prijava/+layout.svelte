@@ -3,10 +3,6 @@
 	// @ts-ignore
 	import { getContext, onMount } from 'svelte';
 	import { page } from '$app/stores';
-	/** @type string */
-	let username;
-	$: username;
-
 	/**
 	 * @type {HTMLLIElement}
 	 */
@@ -52,9 +48,7 @@
 	{#if !username}
 		<h1 class="text-center text-3xl lg:text-5xl text-primary pt-16">Prijavite se</h1>
 		<div class="flex justify-center pt-16">
-			<button class="bg-yellow-500 text-gray-50 py-3 px-8"
-				><a href="/api/auth">Google</a></button
-			>
+			<button class="bg-yellow-500 text-gray-50 py-3 px-8"><a href="/api/auth">Google</a></button>
 		</div>
 	{:else}
 		<div class="">

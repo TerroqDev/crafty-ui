@@ -4,13 +4,12 @@
 	import { animate } from 'motion';
 
 	$: if (browser) document.body.classList.toggle('noscroll', isMenuOpen);
-	let pocetna, onama, otkup, zbrinjavanje, kontakt;
+	let pocetna, onama, zbrinjavanje, kontakt;
 
 	function toggleMenu() {
 		if (!isMenuOpen) {
 			animate(pocetna, { opacity: [0, 1] }, { duration: 1.5, delay: 0.1 });
 			animate(onama, { opacity: [0, 1] }, { duration: 1.5, delay: 0.2 });
-			animate(otkup, { opacity: [0, 1] }, { duration: 1.5, delay: 0.3 });
 			animate(zbrinjavanje, { opacity: [0, 1] }, { duration: 1.5, delay: 0.4 });
 			animate(kontakt, { opacity: [0, 1] }, { duration: 1.5, delay: 0.5 });
 		}
@@ -87,26 +86,41 @@
 		}`}
 	>
 		<ul
-			class="flex flex-col items-center w-full justify-center align-middle text-center font-bold text-gray-500"
+			class="flex flex-col items-center w-full tracking-tighter justify-center align-middle text-center font-bold text-gray-500"
 		>
-			<li bind:this={pocetna} class="text-3xl tracking-tighter p-4 w-full">
-				<a class="hover:text-gray-600" on:click={() => (isMenuOpen = false)} href="/kupuj">
+			<li bind:this={pocetna} class="text-3xl p-4 w-full">
+				<a
+					class="hover:text-primary transition transform ease-in duration-300"
+					on:click={() => (isMenuOpen = false)}
+					href="/kupuj"
+				>
 					Kupuj
 				</a>
 			</li>
-			<li bind:this={onama} class="tracking-tighter text-3xl p-4 w-full">
-				<a class="hover:text-gray-600" on:click={() => (isMenuOpen = false)} href="/prijava">
+			<li bind:this={onama} class=" text-3xl p-4 w-full">
+				<a
+					class="hover:text-primary transition transform ease-in duration-300"
+					on:click={() => (isMenuOpen = false)}
+					href="/prijava"
+				>
 					Moj Profil
 				</a>
 			</li>
-			<li bind:this={otkup} class="text-3xl tracking-tighter p-4 w-full">
-				<a on:click={() => (isMenuOpen = false)} href="/" class="hover:text-gray-600"> Craftko </a>
+			<li bind:this={zbrinjavanje} class="text-3xl p-4 w-full">
+				<a
+					on:click={() => (isMenuOpen = false)}
+					href="/qa"
+					class="hover:text-primary transition transform ease-in duration-300"
+				>
+					Q & A
+				</a>
 			</li>
-			<li bind:this={zbrinjavanje} class="text-3xl tracking-tighter p-4 w-full">
-				<a on:click={() => (isMenuOpen = false)} href="/qa" class="hover:text-gray-600"> Q & A </a>
-			</li>
-			<li bind:this={kontakt} class="text-3xl p-4 tracking-tighter w-full">
-				<a on:click={() => (isMenuOpen = false)} href="/kontakt" class="hover:text-gray-600">
+			<li bind:this={kontakt} class="text-3xl p-4 w-full">
+				<a
+					on:click={() => (isMenuOpen = false)}
+					href="/kontakt"
+					class="hover:text-primary transition transform ease-in duration-300"
+				>
 					Kontakt
 				</a>
 			</li>

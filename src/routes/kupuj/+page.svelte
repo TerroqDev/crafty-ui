@@ -7,62 +7,20 @@
 	// @ts-ignore
 	const formatter = (value) => currency.format(value);
 
+	export let data;
+
 	let isPriceOpen = true;
 	let isColorOpen = true;
 	let isSizeOpen = true;
 
-	let productData = [
-		{
-			id: 1,
-			name: 'Eather Bottle',
-			price: 48,
-			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-01.jpg'
-		},
+	$: filteredProducts =
+		data.products?.filter(
+			(product) => product.price >= values?.[0] && product.price <= values?.[1]
+		) || [];
 
-		{
-			id: 2,
-			name: 'Nomad Tumbler',
-			price: 35,
-			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-02.jpg'
-		},
-		{
-			id: 3,
-			name: 'Focus Paper Refill',
-			price: 89,
-			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-03.jpg'
-		},
-		{
-			id: 4,
-			name: 'Machined Mechanical Pencil',
-			price: 35,
-			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-04.jpg'
-		},
-		{
-			id: 5,
-			name: 'Notes',
-			price: 12,
-			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-05.jpg'
-		},
-		{
-			id: 6,
-			name: 'Stack of boxes',
-			price: 35,
-			imgUrl: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-06.jpg'
-		}
-	];
-	$: filteredProducts = productData.filter(
-		(product) => product.price >= values[0] && product.price <= values[1]
-	);
-	const minPrice = productData.reduce(
-		(min, item) => (item.price < min ? item.price : min),
-		productData[0].price
-	);
-	const maxPrice = productData.reduce(
-		(max, item) => (item.price > max ? item.price : max),
-		productData[0].price
-	);
-	let values = [minPrice, maxPrice];
-	$: console.log(values);
+	$: minPrice = Math.min(...data.products.map((product) => product.price));
+	$: maxPrice = Math.max(...data.products.map((product) => product.price));
+	$: values = [minPrice, maxPrice];
 
 	/**
 	 * @type {import("motion").ElementOrSelector}
@@ -84,7 +42,7 @@
 	});
 </script>
 
-<div class=" ">
+<div class="min-h-screen">
 	<div class="flex">
 		<div bind:this={filters} class="hidden md:flex md:flex-col pt-8 min-w-52 px-4 ml-14">
 			<h1 class="text-xl text-gray-600 mx-4 py-4 border-b border-gray-600 font-bold">Filter by</h1>
@@ -198,9 +156,7 @@
 				<p class="text-sm text-gray-500">12 products</p>
 				<p class="text-sm text-gray-500">1st page</p>
 			</div>
-			<div
-				class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8 pt-2"
-			>
+			<div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 xl:grid-cols-3 xl:gap-x-8 pt-2">
 				{#each filteredProducts as product}
 					<a href="/kupuj/{product.id}" class="group">
 						<div
@@ -208,9 +164,9 @@
 							class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
 						>
 							<img
-								src={product.imgUrl}
-								alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
-								class="h-full w-full object-cover object-center group-hover:opacity-75"
+								src={product?.images?.[0]?.image_url ?? ''}
+								alt={product.description}
+								class="h-64 w-full object-cover object-center group-hover:opacity-75"
 							/>
 						</div>
 						<h3 class="mt-4 text-sm text-gray-700">{product.name}</h3>
@@ -222,8 +178,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	:root {
-	}
-</style>

@@ -1,18 +1,6 @@
 <script>
 	import { inView, animate } from 'motion';
 	import { onMount } from 'svelte';
-	import { getContext } from 'svelte';
-
-	const ctx = getContext('user');
-
-	/** @type string */
-	let username;
-
-	let loggedIn = false;
-	$: loggedIn;
-	ctx.subscribe((/** @type {any} */ value) => {
-		username = value.email;
-	});
 
 	/**
 	 * @type {import("motion").ElementOrSelector}
@@ -41,15 +29,6 @@
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let kraftkoHeading;
-	/**
-	 * @type {import("motion").ElementOrSelector}
-	 */
-	let kraftkoButton;
-
-	/**
-	 * @type {import("motion").ElementOrSelector}
-	 */
 	let craftedItHeading;
 	/**
 	 * @type {import("motion").ElementOrSelector}
@@ -62,9 +41,6 @@
 	let craftedItButton;
 
 	onMount(() => {
-		if (username !== undefined) {
-			loggedIn = true;
-		}
 		inView(heading, () => {
 			animate(heading, { opacity: [0, 1] }, { easing: 'ease-in' });
 		});
@@ -86,17 +62,6 @@
 			animate(tagButton, { opacity: [0, 1] }, { easing: 'ease-in', duration: 0.7 });
 		});
 
-		inView(kraftkoHeading, () => {
-			animate(
-				kraftkoHeading,
-				{ opacity: [0, 1], y: [20, 0] },
-				{ easing: 'ease-in', duration: 0.5 }
-			);
-		});
-		inView(kraftkoButton, () => {
-			animate(kraftkoButton, { opacity: [0, 1] }, { easing: 'ease-in', duration: 0.7 });
-		});
-
 		inView(craftedItSubheading, () => {
 			animate(
 				craftedItSubheading,
@@ -111,9 +76,29 @@
 			animate(craftedItButton, { opacity: [0, 1] }, { easing: 'ease-in', duration: 0.6 });
 		});
 	});
+
+	let filterIcons = [
+		{
+			name: 'materijal',
+			imageUrl:
+				'https://woop14abphufecql.public.blob.vercel-storage.com/crafty/home/kategorije/jon-moore-5fIoyoKlz7A-unsplash-PrMzWdh5DJnBGjIbcA10aTkernw1EE.webp'
+		},
+		{
+			name: 'tematika',
+			imageUrl:
+				'https://woop14abphufecql.public.blob.vercel-storage.com/crafty/home/kategorije/bianca-ackermann-cdWOVKUo4KI-unsplash-XKAU1eb4JByjM3RO6i0FRlsCLU2g8j.webp'
+		},
+		{
+			name: 'boja',
+			imageUrl:
+				'https://woop14abphufecql.public.blob.vercel-storage.com/crafty/home/kategorije/andrew-ridley-jR4Zf-riEjI-unsplash-YYYcawrr09wlbgNqhLHEkunxOVSIgV.webp'
+		}
+	];
 </script>
 
-<div class="flex flex-col justify-center py-28 md:py-52 bg-gray-600">
+<div
+	class="flex flex-col justify-center py-28 md:py-52 bg-cover bg-no-repeat bg-[url('https://woop14abphufecql.public.blob.vercel-storage.com/crafty/annie-spratt-TywjkDHf0Ps-unsplash%281%29-CIz6Wip3ZEuigigU0xN91jDVKdrwEp.jpg')] md:bg-[url('https://woop14abphufecql.public.blob.vercel-storage.com/crafty/annie-spratt-TywjkDHf0Ps-unsplash-dcTt9Wb7hql8qmCC6DBfDpP0369x0l.jpg')]"
+>
 	<h1
 		bind:this={heading}
 		class="mx-auto max-w-4xl font-display text-5xl font-bold tracking-tight text-gray-100 sm:text-7xl text-center"
@@ -129,7 +114,7 @@
 					d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"
 				>
 				</path></svg
-			><span class="relative text-7xl md:text-9xl text-gray-100">CRAFTY</span>
+			><span class="relative text-7xl md:text-9xl text-gray-50 outline-black">CRAFTY</span>
 		</span>
 		<!-- -->
 	</h1>
@@ -163,18 +148,13 @@
 			/>
 		</label>
 	</div>
-	<h2 bind:this={subHeading} class="text-gray-100 text-center py-4 text-xl font-bold">
+	<h2
+		bind:this={subHeading}
+		class="text-gray-50 outline-black text-center py-4 text-xl font-extrabold uppercase tracking-widest"
+	>
 		Kreativnost na jednom mjestu
 	</h2>
 </div>
-{#if loggedIn}
-	<div class="flex w-full justify-center pt-20">
-		<input
-			class="px-4 py-2 bg-gray-50/15 rounded text-gray-600 placeholder:text-gray-400"
-			placeholder="Pretraži proizvode"
-		/>
-	</div>
-{:else}
 	<div class="md:px-48">
 		<h1 bind:this={tagHeading} class="text-2xl text-center text-gray-600 pt-8">
 			Tražiš nesto u ovoj kategoriji?
@@ -183,33 +163,21 @@
 			bind:this={tagList}
 			class="flex flex-col md:flex-row gap-16 md:gap-36 justify-center pt-8 px-16 md:pt-16"
 		>
-			<div class="mx-auto">
-				<div
-					class="border bg-gray-200 w-60 h-60 md:w-80 md:h-80 flex flex-col justify-center rounded-full hover:bg-gray-100 transition-all transform duration-300 ease-in"
-				>
-					<h1 class="p-4 text-xl text-gray-600 text-center">Lorem Ipsum</h1>
+			{#each filterIcons as filter}
+				<div class="mx-auto">
+					<div
+						style={`background-image: url(${filter.imageUrl});`}
+						class="border w-60 h-60 md:w-80 md:h-80 flex flex-col justify-center rounded-full brightness-90 hover:brightness-100 transition-all transform duration-300 ease-in"
+					></div>
+					<h1 class="text-center text-xl md:text-2xl font-medium uppercase text-gray-600 pt-4">
+						{filter.name}
+					</h1>
 				</div>
-				<h1 class="text-center text-xl font-bold text-gray-600 pt-4">Lorem Ipsum</h1>
-			</div>
-			<div class="mx-auto">
-				<div
-					class="border bg-gray-200 w-60 h-60 md:w-80 md:h-80 flex flex-col justify-center rounded-full hover:bg-gray-100 transition-all transform duration-300 ease-in"
-				>
-					<h1 class="p-4 text-xl text-gray-600 text-center">Lorem Ipsum</h1>
-				</div>
-				<h1 class="text-center text-xl font-bold text-gray-600 pt-4">Lorem Ipsum</h1>
-			</div>
-			<div class="mx-auto">
-				<div
-					class="border bg-gray-200 w-60 h-60 md:w-80 md:h-80 flex flex-col justify-center rounded-full hover:bg-gray-100 transition-all transform duration-300 ease-in"
-				>
-					<h1 class="p-4 text-xl text-gray-600 text-center">Lorem Ipsum</h1>
-				</div>
-				<h1 class="text-center text-xl font-bold text-gray-600 pt-4">Lorem Ipsum</h1>
-			</div>
+			{/each}
 		</div>
 		<div class="flex justify-center py-20 w-full text-center">
-			<button
+			<a
+                href="/kupuj"
 				bind:this={tagButton}
 				class="flex justify-center px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-primary text-gray-50 font-bold min-w-80 hover:bg-primary/85 transition-all transform duration-300 ease-in"
 				>VIŠE
@@ -227,19 +195,7 @@
 						></path>
 					</g></svg
 				>
-			</button>
-		</div>
-	</div>
-	<div class="flex flex-col bg-gray-200 py-8 md:px-48 gap-8 justify-center">
-		<h1 bind:this={kraftkoHeading} class="text-2xl text-gray-600 font-extrabold text-center">
-			Razgovaraj s Kraftkom
-		</h1>
-		<div class="text-center pt-64">
-			<button
-				bind:this={kraftkoButton}
-				class="px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-primary text-gray-50 font-bold min-w-80 hover:bg-primary/85 transition-all transform duration-300 ease-in"
-				>KLIKNI OVDJE</button
-			>
+			</a>
 		</div>
 	</div>
 	<div class="px-4 md:px-48 bg-gray-50">
@@ -264,4 +220,3 @@
 			</div>
 		</div>
 	</div>
-{/if}
