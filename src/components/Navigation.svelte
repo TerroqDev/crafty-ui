@@ -17,7 +17,7 @@
 	}
 </script>
 
-<nav class="px-4 md:px-20 lg:px-48 bg-gray-50">
+<nav class="px-4 md:px-20 lg:px-48 bg-gray-800">
 	<div class="flex items-center justify-between w-full">
 		<a href="/" class="z-20" on:click={() => (isMenuOpen = false)}>
 			<svg
@@ -63,17 +63,17 @@
 			<div class="absolute w-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
 				<span
 					class={`absolute h-0.5 w-5 transform transition duration-300 ease-in-out ${
-						isMenuOpen ? 'rotate-45  delay-200 bg-gray-600' : '-translate-y-1.5 bg-gray-600'
+						isMenuOpen ? 'rotate-45  delay-200 bg-gray-600' : '-translate-y-1.5 bg-gray-100'
 					}`}
 				></span>
 				<span
-					class={`absolute h-0.5 bg-gray-600 transform transition-all duration-200 ease-in-out ${
+					class={`absolute h-0.5 bg-gray-100 transform transition-all duration-200 ease-in-out ${
 						isMenuOpen ? 'w-0 opacity-50' : 'w-5 delay-200 opacity-100'
 					}`}
 				></span>
 				<span
 					class={`absolute h-0.5 w-5 transform transition duration-300 ease-in-out ${
-						isMenuOpen ? '-rotate-45 bg-gray-600 delay-200' : 'translate-y-1.5 bg-gray-600'
+						isMenuOpen ? '-rotate-45 bg-gray-600 delay-200' : 'translate-y-1.5 bg-gray-100'
 					}`}
 				></span>
 			</div>
