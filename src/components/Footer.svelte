@@ -41,9 +41,8 @@
 			<h1 class="text-lg font-bold text-primary">Linkovi</h1>
 			<ul class="pt-4 flex flex-col gap-2">
 				<li><a href="/kupuj" class="hover:underline">Kupuj</a></li>
-				<li><a href="/mojprofil" class="hover:underline">Moj profil</a></li>
-				<li><a href="/kraftko" class="hover:underline">Kraftko</a></li>
-				<li><a href="/q&a" class="hover:underline">Q & A</a></li>
+				<li><a href="/prijava" class="hover:underline">Moj profil</a></li>
+				<li><a href="/qa" class="hover:underline">Q & A</a></li>
 				<li><a href="/kontakt" class="hover:underline">Kontakt</a></li>
 			</ul>
 		</div>
@@ -86,7 +85,7 @@
 			<h1 class="text-lg font-bold text-primary">Dokumenti</h1>
 			<ul class="pt-4 flex flex-col gap-2">
 				<li><a href="/kupuj" class="hover:underline">Impressum</a></li>
-				<li><a href="/mojprofil" class="hover:underline">Zastita potrosaca</a></li>
+				<li><a href="/prijava" class="hover:underline">Zastita potrosaca</a></li>
 			</ul>
 		</div>
 	</div>

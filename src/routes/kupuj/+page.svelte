@@ -16,8 +16,9 @@
 		}
 	}
 
-    // TODO: search
-    // TODO: breadcrumbs 
+	// TODO: search
+	// TODO: breadcrumbs
+	// FIXME: going back doesnt work
 	let isPriceOpen = true;
 	let isColorOpen = true;
 	let isSizeOpen = true;
@@ -54,9 +55,9 @@
 </script>
 
 <div class="md:min-h-screen">
-    <div class="w-full pt-4 px-4 md:px-20 md:pt-10">
-        <input class="w-full border px-3 py-2 rounded-lg" placeholder="Trazi..." />
-    </div>
+	<div class="w-full pt-4 px-4 md:px-20 md:pt-10">
+		<input class="w-full border px-3 py-2 rounded-lg" placeholder="Trazi..." />
+	</div>
 	<div
 		class={`fixed top-0 right-0 ${showModal ? '' : 'translate-x-full'} h-screen  bg-gray-50 w-full text-red-500 shadow-lg transform transition-transform duration-300 z-50 md:hidden`}
 	>

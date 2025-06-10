@@ -2,16 +2,26 @@
 	let isMenuOpen = false;
 	import { browser } from '$app/environment';
 	import { animate } from 'motion';
+    import { user } from '../routes/store';
 
 	$: if (browser) document.body.classList.toggle('noscroll', isMenuOpen);
-	let pocetna, onama, zbrinjavanje, kontakt;
-
+    // FIX: fix moj profil link going to prijava
+    /**
+	 * @type {import("motion").ElementOrSelector}
+	 */
+    let odjava;
+    /**
+	 * @type {any[]}
+	 */
+    let navRefs = [];
+    const menuItems = [{name: "Kupuj", link: "kupuj"}, {name: "Moj profil", link: "prijava"},{name: "Q & A", link: "qa"}, {name: "Kontakt", link:"kontakt"}]
 	function toggleMenu() {
 		if (!isMenuOpen) {
-			animate(pocetna, { opacity: [0, 1] }, { duration: 1.5, delay: 0.1 });
-			animate(onama, { opacity: [0, 1] }, { duration: 1.5, delay: 0.2 });
-			animate(zbrinjavanje, { opacity: [0, 1] }, { duration: 1.5, delay: 0.4 });
-			animate(kontakt, { opacity: [0, 1] }, { duration: 1.5, delay: 0.5 });
+            for (const [index, el] of navRefs.entries()) {
+
+                animate(el, {opacity: [0, 1]}, {duration: 1.5, delay: 0.1 * index + 0.1})
+            }
+            animate(odjava, {opacity: [0, 1]}, {duration: 1.5, delay: 0.1 * menuItems.length + 0.1})
 		}
 		isMenuOpen = !isMenuOpen;
 	}
@@ -88,42 +98,28 @@
 		<ul
 			class="flex flex-col items-center w-full tracking-tighter justify-center align-middle text-center font-bold text-gray-500"
 		>
-			<li bind:this={pocetna} class="text-3xl p-4 w-full">
-				<a
-					class="hover:text-primary transition transform ease-in duration-300"
-					on:click={() => (isMenuOpen = false)}
-					href="/kupuj"
-				>
-					Kupuj
-				</a>
-			</li>
-			<li bind:this={onama} class=" text-3xl p-4 w-full">
-				<a
-					class="hover:text-primary transition transform ease-in duration-300"
-					on:click={() => (isMenuOpen = false)}
-					href="/prijava"
-				>
-					Moj Profil
-				</a>
-			</li>
-			<li bind:this={zbrinjavanje} class="text-3xl p-4 w-full">
-				<a
-					on:click={() => (isMenuOpen = false)}
-					href="/qa"
-					class="hover:text-primary transition transform ease-in duration-300"
-				>
-					Q & A
-				</a>
-			</li>
-			<li bind:this={kontakt} class="text-3xl p-4 w-full">
-				<a
-					on:click={() => (isMenuOpen = false)}
-					href="/kontakt"
-					class="hover:text-primary transition transform ease-in duration-300"
-				>
-					Kontakt
-				</a>
-			</li>
+            {#each menuItems as item, index}
+                <li bind:this={navRefs[index]} class="text-3xl p-4 w-full">
+                    <a
+                        class="hover:text-primary transition transform ease-in duration-300"
+                        on:click={() => (isMenuOpen = false)}
+                        href="/{item.link}"
+                    >
+                        {item.name}
+                    </a>
+                </li>
+            {/each}
+            {#if $user}
+                <li bind:this={odjava} class="text-3xl p-4 w-full">
+                    <a
+                        on:click={() => (isMenuOpen = false)}
+                        href="/kontakt"
+                        class="hover:text-primary transition transform ease-in duration-300"
+                    >
+                        Odjava
+                    </a>
+                </li>
+            {/if}
 		</ul>
 	</nav>
 </nav>
