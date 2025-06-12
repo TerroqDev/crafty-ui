@@ -1,3 +1,16 @@
+<script>
+    let editMode = false;
+	/**
+	 * @param {{ key: any; }} e
+	 */
+	function exitEditMode(e) {
+		switch (e.key) {
+			case 'Escape':
+				editMode = true;
+				break;
+		}
+	}
+</script>
 <div class="flex flex-col p-4 rounded-lg shadow mt-8 border">
 	<div class="flex w-full justify-between gap-16 pt-2 pb-4 border-b">
 		<div class="flex flex-col">

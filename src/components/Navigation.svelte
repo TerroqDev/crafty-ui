@@ -2,26 +2,48 @@
 	let isMenuOpen = false;
 	import { browser } from '$app/environment';
 	import { animate } from 'motion';
-    import { user } from '../routes/store';
+	import { user } from '../routes/store';
+	import { goto } from '$app/navigation';
 
 	$: if (browser) document.body.classList.toggle('noscroll', isMenuOpen);
-    // FIX: fix moj profil link going to prijava
-    /**
+	// FIX: fix moj profil link going to prijava
+	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-    let odjava;
-    /**
+	let odjava;
+
+	function logOff() {
+		user.set({});
+		isMenuOpen = false;
+		goto('/');
+		return;
+	}
+	/**
 	 * @type {any[]}
 	 */
-    let navRefs = [];
-    const menuItems = [{name: "Kupuj", link: "kupuj"}, {name: "Moj profil", link: "prijava"},{name: "Q & A", link: "qa"}, {name: "Kontakt", link:"kontakt"}]
+	let navRefs = [];
+	const menuItemsLoggedOut = [
+		{ name: 'Kupuj', link: 'kupuj' },
+		{ name: 'Prijava', link: 'prijava' },
+		{ name: 'Q & A', link: 'qa' },
+		{ name: 'Kontakt', link: 'kontakt' }
+	];
+    
+	const menuItemsLoggedIn = [
+		{ name: 'Kupuj', link: 'kupuj' },
+		{ name: 'Moj profil', link: 'profil' },
+		{ name: 'Q & A', link: 'qa' },
+		{ name: 'Kontakt', link: 'kontakt' },
+        { name: "Logout", link: "/"}
+	];
 	function toggleMenu() {
 		if (!isMenuOpen) {
-            for (const [index, el] of navRefs.entries()) {
-
-                animate(el, {opacity: [0, 1]}, {duration: 1.5, delay: 0.1 * index + 0.1})
-            }
-            animate(odjava, {opacity: [0, 1]}, {duration: 1.5, delay: 0.1 * menuItems.length + 0.1})
+			for (const [index, el] of navRefs.entries()) {
+				animate(el, { opacity: [0, 1] }, { duration: 1.5, delay: 0.1 * index + 0.1 });
+			}
+			//if($user){
+			//  animate(odjava, {opacity: [0, 1]}, {duration: 1.5, delay: 0.1 * menuItems.length + 0.1})
+			//}
 		}
 		isMenuOpen = !isMenuOpen;
 	}
@@ -98,28 +120,32 @@
 		<ul
 			class="flex flex-col items-center w-full tracking-tighter justify-center align-middle text-center font-bold text-gray-500"
 		>
-            {#each menuItems as item, index}
-                <li bind:this={navRefs[index]} class="text-3xl p-4 w-full">
-                    <a
-                        class="hover:text-primary transition transform ease-in duration-300"
-                        on:click={() => (isMenuOpen = false)}
-                        href="/{item.link}"
-                    >
-                        {item.name}
-                    </a>
-                </li>
-            {/each}
-            {#if $user}
-                <li bind:this={odjava} class="text-3xl p-4 w-full">
-                    <a
-                        on:click={() => (isMenuOpen = false)}
-                        href="/kontakt"
-                        class="hover:text-primary transition transform ease-in duration-300"
-                    >
-                        Odjava
-                    </a>
-                </li>
-            {/if}
+			{#if $user}
+
+                {#each menuItemsLoggedIn as item, index}
+                    <li bind:this={navRefs[index]} class="text-3xl p-4 w-full">
+                        <a
+                            class="hover:text-primary transition transform ease-in duration-300"
+                            on:click={() => (isMenuOpen = false)}
+                            href="/{item.link}"
+                        >
+                            {item.name}
+                        </a>
+                    </li>
+                {/each}
+            {:else}
+                {#each menuItemsLoggedOut as item, index}
+                    <li bind:this={navRefs[index]} class="text-3xl p-4 w-full">
+                        <a
+                            class="hover:text-primary transition transform ease-in duration-300"
+                            on:click={() => (isMenuOpen = false)}
+                            href="/{item.link}"
+                        >
+                            {item.name}
+                        </a>
+                    </li>
+                {/each}
+			{/if}
 		</ul>
 	</nav>
 </nav>

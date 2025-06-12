@@ -1,16 +1,14 @@
 <script>
 	import { page } from '$app/stores';
 	import { user } from '../routes/store';
-	import { derived } from 'svelte/store';
 	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
 
 	$: errorMessage = $page.form?.errors?.message;
-	$: successMessage = $page.form?.message;
-
-	const formData = derived(page, ($page) => $page.form);
 
 	$: if ($page.form?.user) {
 		user.set({ user: $page.form.user, email: $page.form.email });
+        goto("/")
 	}
 </script>
 

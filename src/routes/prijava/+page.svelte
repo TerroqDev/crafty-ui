@@ -1,18 +1,11 @@
 <script>
 	/** @type {import('./$types').PageData} */
-	// @ts-ignore
-	import { getContext, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	/** @type boolean */
 	$: editMode = true;
-	const ctx = getContext('user');
 
-	let updateFirstName = $ctx.firstName;
-	let updateLastName = $ctx.lastName;
-	let updateNickname = $ctx.nickname;
-	let updateInstagram = $ctx.instagram;
-	let updateWhatsApp = $ctx.whatsapp;
-
+    // FIXME: use hooks for auth, remove the login from the profile section
 	/**
 	 * @param {{ key: any; }} e
 	 */
@@ -24,37 +17,11 @@
 		}
 	}
 
-	async function updateUserData() {
-		if (updateFirstName === $ctx.firstName && updateLastName === ctx.lastName) {
-			return;
-		}
-		const request = await fetch(`/api/users/${$ctx.email}`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				firstName: updateFirstName,
-				lastName: updateLastName,
-				nickname: updateNickname,
-				instagram: updateInstagram,
-				whatsapp: updateWhatsApp
-			})
-		});
-		const response = await request.json();
-		$ctx.firstName = response.firstName;
-		$ctx.lastName = response.lastName;
-		$ctx.nickname = response.nickname;
-		$ctx.instagram = response.instagram;
-		$ctx.whatsapp = response.whatsapp;
-		editMode = !editMode;
-	}
-
 	onMount(async () => {});
 </script>
 
-<div class="flex flex-col h-full">
-	<div class="flex w-full justify-between gap-16 py-4 border-b">
+<div class="flex flex-col p-4 rounded-lg shadow mt-8 border">
+	<div class="flex w-full justify-between gap-16 pt-2 pb-4 border-b">
 		<div class="flex flex-col">
 			<p class="font-bold text-gray-600">Ime</p>
 			<p class="text-gray-500">Vaše ime i prezime</p>
@@ -106,7 +73,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="flex w-full justify-between gap-16 py-4 border-b">
+	<div class="flex w-full justify-between gap-16 pt-4 pb-2">
 		<div class="flex flex-col">
 			<p class="font-bold text-gray-600">Email</p>
 			<p class="text-gray-500">Email koji ćete koristiti u komunikaciji</p>
