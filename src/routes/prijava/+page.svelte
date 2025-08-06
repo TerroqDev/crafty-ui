@@ -5,7 +5,7 @@
 	/** @type boolean */
 	$: editMode = true;
 
-    // FIXME: use hooks for auth, remove the login from the profile section
+	// FIXME: use hooks for auth, remove the login from the profile section
 	/**
 	 * @param {{ key: any; }} e
 	 */

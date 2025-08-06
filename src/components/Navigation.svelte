@@ -28,13 +28,13 @@
 		{ name: 'Q & A', link: 'qa' },
 		{ name: 'Kontakt', link: 'kontakt' }
 	];
-    
+
 	const menuItemsLoggedIn = [
 		{ name: 'Kupuj', link: 'kupuj' },
 		{ name: 'Moj profil', link: 'profil' },
 		{ name: 'Q & A', link: 'qa' },
 		{ name: 'Kontakt', link: 'kontakt' },
-        { name: "Logout", link: "/"}
+		{ name: 'Logout', link: '/' }
 	];
 	function toggleMenu() {
 		if (!isMenuOpen) {
@@ -121,30 +121,29 @@
 			class="flex flex-col items-center w-full tracking-tighter justify-center align-middle text-center font-bold text-gray-500"
 		>
 			{#if $user}
-
-                {#each menuItemsLoggedIn as item, index}
-                    <li bind:this={navRefs[index]} class="text-3xl p-4 w-full">
-                        <a
-                            class="hover:text-primary transition transform ease-in duration-300"
-                            on:click={() => (isMenuOpen = false)}
-                            href="/{item.link}"
-                        >
-                            {item.name}
-                        </a>
-                    </li>
-                {/each}
-            {:else}
-                {#each menuItemsLoggedOut as item, index}
-                    <li bind:this={navRefs[index]} class="text-3xl p-4 w-full">
-                        <a
-                            class="hover:text-primary transition transform ease-in duration-300"
-                            on:click={() => (isMenuOpen = false)}
-                            href="/{item.link}"
-                        >
-                            {item.name}
-                        </a>
-                    </li>
-                {/each}
+				{#each menuItemsLoggedIn as item, index}
+					<li bind:this={navRefs[index]} class="text-3xl p-4 w-full">
+						<a
+							class="hover:text-primary transition transform ease-in duration-300"
+							on:click={() => (isMenuOpen = false)}
+							href="/{item.link}"
+						>
+							{item.name}
+						</a>
+					</li>
+				{/each}
+			{:else}
+				{#each menuItemsLoggedOut as item, index}
+					<li bind:this={navRefs[index]} class="text-3xl p-4 w-full">
+						<a
+							class="hover:text-primary transition transform ease-in duration-300"
+							on:click={() => (isMenuOpen = false)}
+							href="/{item.link}"
+						>
+							{item.name}
+						</a>
+					</li>
+				{/each}
 			{/if}
 		</ul>
 	</nav>

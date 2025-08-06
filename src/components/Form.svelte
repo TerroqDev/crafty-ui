@@ -8,7 +8,7 @@
 
 	$: if ($page.form?.user) {
 		user.set({ user: $page.form.user, email: $page.form.email });
-        goto("/")
+		goto('/');
 	}
 </script>
 

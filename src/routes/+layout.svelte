@@ -5,11 +5,10 @@
 
 	// HACK: might break the layout because of the screen here
 </script>
-
-<div class="h-screen flex flex-col">
+<div class="min-h-screen flex flex-col">
 	<Navigation />
-	<div class="h-full">
+	<main class="flex-1">
 		<slot />
-		<Footer />
-	</div>
+	</main>
+	<Footer />
 </div>

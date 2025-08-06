@@ -1,4 +1,5 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { inView, animate } from 'motion';
 	import { onMount } from 'svelte';
 
@@ -213,6 +214,7 @@
 			<div class="text-center pt-8 pb-4 md:pt-20">
 				<button
 					bind:this={craftedItButton}
+					on:click={() => goto('/kupuj')}
 					class="px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-primary text-gray-50 font-bold min-w-80 hover:bg-primary/85 transition-all transform duration-300 ease-in"
 					>Shop Now</button
 				>

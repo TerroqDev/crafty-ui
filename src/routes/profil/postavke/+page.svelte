@@ -1,5 +1,7 @@
 <script>
-    let editMode = false;
+	import { deserialize } from '$app/forms';
+
+	let editMode = false;
 	/**
 	 * @param {{ key: any; }} e
 	 */
@@ -10,71 +12,56 @@
 				break;
 		}
 	}
+
+	const profileSettings = [
+		{ name: 'Ime', desc: 'Vaše ime i prezime', value: 'Valentin Vareskic' },
+		{
+			name: 'Email',
+			desc: 'Email koji ćete koristiti u komunikaciji',
+			value: 'valentin.vareskic@gmail.com'
+		},
+		{ name: 'Oib', desc: 'Osobni identifikacijski broj', value: '' }
+	];
 </script>
-<div class="flex flex-col p-4 rounded-lg shadow mt-8 border">
-	<div class="flex w-full justify-between gap-16 pt-2 pb-4 border-b">
-		<div class="flex flex-col">
-			<p class="font-bold text-gray-600">Ime</p>
-			<p class="text-gray-500">Vaše ime i prezime</p>
-		</div>
-		<div class="flex gap-4 items-center">
-			<p class="font-semibold text-gray-600">Valentin Vareškić</p>
-			<div>
-				<button class="text-yellow-500">Promjeni</button>
+
+<div class="flex flex-col px-4 rounded-lg shadow mt-8 border">
+	{#each profileSettings as setting}
+		<div class="flex w-full md:gap-24 py-4 border-b justify-between">
+			<div class="flex flex-col">
+				<p class="font-bold text-gray-600 text-md md:text-lg">{setting.name}</p>
+				<p class="text-gray-500 text-xs md:text-sm">{setting.desc}</p>
+			</div>
+			<div class="flex gap-4 items-center">
+				<div class="flex flex-col justify-center"></div>
+				<div class="flex gap-4 items-center">
+					<p class="font-semibold text-sm md:text-md text-gray-600">{setting.value}</p>
+					<button class="text-yellow-500 w-6 h-auto">
+						<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+							><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+								id="SVGRepo_tracerCarrier"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							></g><g id="SVGRepo_iconCarrier">
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M3.25 22C3.25 21.5858 3.58579 21.25 4 21.25H20C20.4142 21.25 20.75 21.5858 20.75 22C20.75 22.4142 20.4142 22.75 20 22.75H4C3.58579 22.75 3.25 22.4142 3.25 22Z"
+									fill="#718096"
+								></path>
+								<path
+									d="M11.5201 14.929L11.5201 14.9289L17.4368 9.01225C16.6315 8.6771 15.6777 8.12656 14.7757 7.22455C13.8736 6.32238 13.323 5.36846 12.9879 4.56312L7.07106 10.4799L7.07101 10.48C6.60932 10.9417 6.37846 11.1725 6.17992 11.4271C5.94571 11.7273 5.74491 12.0522 5.58107 12.396C5.44219 12.6874 5.33894 12.9972 5.13245 13.6167L4.04356 16.8833C3.94194 17.1882 4.02128 17.5243 4.2485 17.7515C4.47573 17.9787 4.81182 18.0581 5.11667 17.9564L8.38334 16.8676C9.00281 16.6611 9.31256 16.5578 9.60398 16.4189C9.94775 16.2551 10.2727 16.0543 10.5729 15.8201C10.8275 15.6215 11.0584 15.3907 11.5201 14.929Z"
+									fill="#718096"
+								></path>
+								<path
+									d="M19.0786 7.37044C20.3071 6.14188 20.3071 4.14999 19.0786 2.92142C17.85 1.69286 15.8581 1.69286 14.6296 2.92142L13.9199 3.63105C13.9296 3.6604 13.9397 3.69015 13.9502 3.72028C14.2103 4.47 14.701 5.45281 15.6243 6.37602C16.5475 7.29923 17.5303 7.78999 18.28 8.05009C18.31 8.0605 18.3396 8.07054 18.3688 8.08021L19.0786 7.37044Z"
+									fill="#718096"
+								></path>
+							</g></svg
+						>
+					</button>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="flex w-full gap-24 py-4 border-b justify-between">
-		<div class="flex flex-col">
-			<p class="font-bold text-gray-600">Slika</p>
-			<p class="text-gray-500">Slika koju ćemo prikazati na vašem profilu</p>
-		</div>
-		<div class="flex gap-4 items-center">
-			<div class="flex flex-col justify-center">
-				<svg
-					class="w-10"
-					viewBox="0 0 24 24"
-					id="Layer_1"
-					data-name="Layer 1"
-					xmlns="http://www.w3.org/2000/svg"
-					fill="#000000"
-					><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
-						id="SVGRepo_tracerCarrier"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					></g><g id="SVGRepo_iconCarrier"
-						><defs
-							><style>
-								.cls-1 {
-									fill: none;
-									stroke: #6b7280;
-									stroke-miterlimit: 10;
-									stroke-width: 1.91px;
-								}
-							</style></defs
-						><circle class="cls-1" cx="12" cy="7.25" r="5.73"></circle><path
-							class="cls-1"
-							d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05"
-						></path></g
-					></svg
-				>
-			</div>
-			<div>
-				<button class="text-yellow-500">Promjeni</button>
-			</div>
-		</div>
-	</div>
-	<div class="flex w-full justify-between gap-16 pt-4 pb-2">
-		<div class="flex flex-col">
-			<p class="font-bold text-gray-600">Email</p>
-			<p class="text-gray-500">Email koji ćete koristiti u komunikaciji</p>
-		</div>
-		<div class="flex gap-4 items-center">
-			<p class="font-semibold text-gray-600">valentin.vareskic@gmail.com</p>
-			<div>
-				<button class="text-yellow-500">Promjeni</button>
-			</div>
-		</div>
-	</div>
+	{/each}
 </div>
 <svelte:window on:keydown|preventDefault={exitEditMode} />

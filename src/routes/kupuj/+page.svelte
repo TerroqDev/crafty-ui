@@ -1,53 +1,32 @@
 <script>
 	import { animate, inView } from 'motion';
 	import { onMount } from 'svelte';
-	import RangeSlider from 'svelte-range-slider-pips';
+	import FilterModal from '../../components/FilterModal.svelte';
+	import Filter from '../../components/Filter.svelte';
 	import { fade } from 'svelte/transition';
-	const currency = new Intl.NumberFormat('de', { style: 'currency', currency: 'EUR' });
-	// @ts-ignore
-	const formatter = (value) => currency.format(value);
-
-	export let data;
-	$: {
-		if (showModal) {
-			document.body.classList.add('overflow-hidden');
-		} else {
-			document.body.classList.remove('overflow-hidden');
-		}
-	}
+	import Loading from '../../components/Loading.svelte';
 
 	// TODO: search
-	// TODO: breadcrumbs
-	// FIXME: going back doesnt work
-	let isPriceOpen = true;
-	let isColorOpen = true;
-	let isSizeOpen = true;
+
+	/**
+	 * @type {string | any[]}
+	 */
+	let products = [];
 
 	let showModal = false;
 
-	$: filteredProducts =
-		data.products?.filter(
-			(product) => product.price >= values?.[0] && product.price <= values?.[1]
-		) || [];
+	async function fetchFroducts() {
+		const res = await fetch('/api/products');
+		return await res.json();
+	}
 
-	$: minPrice = Math.min(...data.products.map((product) => product.price));
-	$: maxPrice = Math.max(...data.products.map((product) => product.price));
-	$: values = [minPrice, maxPrice];
-
-	/**
-	 * @type {import("motion").ElementOrSelector}
-	 */
-	let filters;
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
 	let mainSection;
 
-	onMount(() => {
-		inView(filters, () => {
-			animate(filters, { x: [-100, 0], opacity: [0, 1] }, { duration: 0.7 });
-		});
-
+	onMount(async () => {
+		products = await fetchFroducts();
 		inView(mainSection, () => {
 			animate(mainSection, { opacity: [0, 1] }, { duration: 1 });
 		});
@@ -55,161 +34,12 @@
 </script>
 
 <div class="md:min-h-screen">
-	<div class="w-full pt-4 px-4 md:px-20 md:pt-10">
-		<input class="w-full border px-3 py-2 rounded-lg" placeholder="Trazi..." />
-	</div>
-	<div
-		class={`fixed top-0 right-0 ${showModal ? '' : 'translate-x-full'} h-screen  bg-gray-50 w-full text-red-500 shadow-lg transform transition-transform duration-300 z-50 md:hidden`}
-	>
-		<div class="flex flex-col justify-center h-full">
-			<h1 class="text-xl text-gray-600 mx-4 py-4 border-b border-gray-600 font-bold">Filter by</h1>
-			<div class="mx-4 pt-4">
-				<p class="text-gray-600 font-semibold flex justify-between">
-					Price <span class="cursor-pointer" on:click={() => (isPriceOpen = !isPriceOpen)}>
-						<div class="relative w-3 h-3 cursor-pointer group mt-2">
-							<!-- Vertical line -->
-							<div
-								class={`absolute top-0 left-1/2 w-[2px] h-full bg-gray-600 transform -translate-x-1/2 transition-transform duration-300 ease-out ${isPriceOpen ? 'rotate-90' : ''} `}
-							></div>
-
-							<!-- Horizontal line -->
-							<div
-								class={`absolute top-1/2 left-0 w-full h-[2px] bg-gray-600 transform -translate-y-1/2 transition-transform duration-300 ease-out ${isPriceOpen ? 'rotate-180' : ''} `}
-							></div>
-						</div>
-					</span>
-				</p>
-			</div>
-
-			<div
-				class={`px-2 transform transition-all duration-300 overflow-hidden ${isPriceOpen ? 'max-h-0 ' : 'max-h-40'} `}
-			>
-				<RangeSlider
-					{formatter}
-					range
-					pips
-					all="label"
-					min={minPrice}
-					max={maxPrice}
-					step={1}
-					pipstep={50000}
-					bind:values
-				/>
-			</div>
-			<hr class="bg-gray-600 mx-4 mt-4" />
-
-			<button class="mt-8 text-yellow-500" on:click={() => (showModal = false)}>Save</button>
-		</div>
-	</div>
+	<FilterModal {showModal} />
 	<div class="flex">
-		<div bind:this={filters} class="hidden md:flex md:flex-col pt-8 min-w-52 px-4 ml-14">
-			<h1 class="text-xl text-gray-600 mx-4 py-4 border-b border-gray-600 font-bold">Filter by</h1>
-			<div class="mx-4 pt-4">
-				<p class="text-gray-600 font-semibold flex justify-between">
-					Price <span class="cursor-pointer" on:click={() => (isPriceOpen = !isPriceOpen)}>
-						<div class="relative w-3 h-3 cursor-pointer group mt-2">
-							<!-- Vertical line -->
-							<div
-								class={`absolute top-0 left-1/2 w-[2px] h-full bg-gray-600 transform -translate-x-1/2 transition-transform duration-300 ease-out ${isPriceOpen ? 'rotate-90' : ''} `}
-							></div>
-
-							<!-- Horizontal line -->
-							<div
-								class={`absolute top-1/2 left-0 w-full h-[2px] bg-gray-600 transform -translate-y-1/2 transition-transform duration-300 ease-out ${isPriceOpen ? 'rotate-180' : ''} `}
-							></div>
-						</div>
-					</span>
-				</p>
-			</div>
-
-			<div
-				class={`px-2 transform transition-all duration-300 overflow-hidden ${isPriceOpen ? 'max-h-0 ' : 'max-h-40'} `}
-			>
-				<RangeSlider
-					{formatter}
-					range
-					pips
-					all="label"
-					min={minPrice}
-					max={maxPrice}
-					step={1}
-					pipstep={50000}
-					bind:values
-				/>
-			</div>
-			<hr class="bg-gray-600 mx-4 mt-4" />
-			<div class="mx-4 pt-4">
-				<p class="text-gray-600 font-semibold flex justify-between">
-					Size <span class="cursor-pointer" on:click={() => (isSizeOpen = !isSizeOpen)}>
-						<div class="relative w-3 h-3 cursor-pointer group mt-2">
-							<!-- Vertical line -->
-							<div
-								class={`absolute top-0 left-1/2 w-[2px] h-full bg-gray-600 transform -translate-x-1/2 transition-transform duration-300 ease-out ${isSizeOpen ? 'rotate-90' : ''} `}
-							></div>
-
-							<!-- Horizontal line -->
-							<div
-								class={`absolute top-1/2 left-0 w-full h-[2px] bg-gray-600 transform -translate-y-1/2 transition-transform duration-300 ease-out ${isSizeOpen ? 'rotate-180' : ''} `}
-							></div>
-						</div>
-					</span>
-				</p>
-			</div>
-			<div
-				class={`px-4 transform transition-all duration-300 overflow-hidden ${isSizeOpen ? 'max-h-0 ' : 'max-h-40'} `}
-			>
-				<div class="pt-2">
-					<input id="100ml" type="checkbox" />
-					<label for="100ml">100 ml</label>
-				</div>
-				<div class="pt-2">
-					<input id="200ml" type="checkbox" />
-					<label for="200ml">200 ml</label>
-				</div>
-				<div class="pt-2">
-					<input id="300ml" type="checkbox" />
-					<label for="300ml">300 ml</label>
-				</div>
-			</div>
-			<hr class="bg-gray-600 mx-4 mt-4" />
-			<div class="mx-4 pt-4">
-				<p class="text-gray-600 font-semibold flex justify-between">
-					Color <span class="cursor-pointer" on:click={() => (isColorOpen = !isColorOpen)}>
-						<div class="relative w-3 h-3 cursor-pointer group mt-2">
-							<!-- Vertical line -->
-							<div
-								class={`absolute top-0 left-1/2 w-[2px] h-full bg-gray-600 transform -translate-x-1/2 transition-transform duration-300 ease-out ${isColorOpen ? 'rotate-90' : ''} `}
-							></div>
-
-							<!-- Horizontal line -->
-							<div
-								class={`absolute top-1/2 left-0 w-full h-[2px] bg-gray-600 transform -translate-y-1/2 transition-transform duration-300 ease-out ${isColorOpen ? 'rotate-180' : ''} `}
-							></div>
-						</div>
-					</span>
-				</p>
-			</div>
-			<div
-				class={`px-4 transform transition-all duration-300 overflow-hidden ${isColorOpen ? 'max-h-0 ' : 'max-h-40'} `}
-			>
-				<div class="pt-2">
-					<input id="black" type="checkbox" />
-					<label for="black">Black</label>
-				</div>
-				<div class="pt-2">
-					<input id="red" type="checkbox" />
-					<label for="red">Red</label>
-				</div>
-				<div class="pt-2">
-					<input id="green" type="checkbox" />
-					<label for="green">Green</label>
-				</div>
-			</div>
-			<hr class="bg-gray-600 mx-4 mt-4" />
-		</div>
+		<Filter />
 		<div bind:this={mainSection} class="w-full pb-4 px-4 md:pr-48">
 			<div class="flex justify-between pt-10">
-				<p class="text-md text-gray-500">{filteredProducts.length} products</p>
+				<p class="text-md text-gray-500">{products.length} products</p>
 				<button
 					on:click={() => (showModal = !showModal)}
 					class="bg-white w-8 h-auto border rounded-lg p-1 md:hidden"
@@ -230,25 +60,33 @@
 					>
 				</button>
 			</div>
-			<div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 xl:grid-cols-3 xl:gap-x-8 pt-2">
-				{#each filteredProducts as product}
-					<a href="/kupuj/{product.id}" class="group">
-						<div
-							transition:fade
-							class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
-						>
-							<img
-								src={product?.images?.[0]?.image_url ?? ''}
-								alt={product.description}
-								class="h-64 w-full object-cover object-center group-hover:opacity-75"
-							/>
-						</div>
-						<h3 class="mt-4 text-sm text-gray-700">{product.name}</h3>
-						<p class="mt-1 text-lg font-medium text-gray-900">${product.price}</p>
-					</a>
-				{/each}
-				<!-- More products... -->
-			</div>
+			{#if products.length == 0}
+                <div class="flex flex-col justify-center h-full">
+
+				<Loading />
+                </div>
+			{:else}
+				<div
+					class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 xl:grid-cols-3 xl:gap-x-8 pt-2"
+				>
+					{#each products as product}
+						<a href="/kupuj/{product.id}" class="group">
+							<div
+								transition:fade
+								class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
+							>
+								<img
+									src={product?.images?.[0]?.image_url ?? ''}
+									alt={product.description}
+									class="h-64 w-full object-cover object-center group-hover:opacity-75"
+								/>
+							</div>
+							<h3 class="mt-4 text-sm text-gray-700">{product.name}</h3>
+							<p class="mt-1 text-lg font-medium text-gray-900">${product.price}</p>
+						</a>
+					{/each}
+				</div>
+			{/if}
 		</div>
 	</div>
 </div>

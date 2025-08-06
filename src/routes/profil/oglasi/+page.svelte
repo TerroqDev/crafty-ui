@@ -1,17 +1,16 @@
 <script>
-	let productData = [
-		{ id: 1, name: 'Eathern Bottle', price: '75', description: 'Lorem Ipsum' },
-		{ id: 2, name: 'Bozicne kuglice', price: '25', description: 'Lorem Ipsum' }
-	];
+	export let data;
+	// TODO: klik na card za otvoriti oglas umjesto imena
+	// TODO: na hover promjeniti boju texta, hover same kartice, ne texta
 </script>
 
 <div class="flex flex-col w-full pt-8">
-	{#each productData as product}
-		<div class="border shadow rounded-lg p-4 mb-4">
+	{#each data.products as product}
+		<div
+			class="border shadow rounded-lg text-gray-600 hover:text-yellow-500 p-4 mb-4 hover:shadow-lg transform transition ease-in duration-200"
+		>
 			<div class="flex justify-between">
-				<a href="/prijava/oglasi/{product.id}" class="text-gray-600 font-bold hover:text-yellow-500"
-					>{product.name}</a
-				>
+				<a href="/profil/oglasi/{product.id}" class="font-bold">{product.name}</a>
 				<div class="flex gap-2">
 					<h1 class="text-gray-600 font-medium">{product.price}$</h1>
 					<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"

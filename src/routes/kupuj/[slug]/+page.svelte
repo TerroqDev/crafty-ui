@@ -3,6 +3,8 @@
 	import { animate, inView } from 'motion';
 	import { onDestroy, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { page } from '$app/stores';
+	import { derived } from 'svelte/store';
 
 	// TODO: image change animation
 	// TODO: image size set
@@ -14,6 +16,16 @@
 
 	let imageCounter = 0;
 	let fullSizeImage = false;
+
+	const breadcrumbs = derived(page, ($page) => {
+		const segments = $page.url.pathname.split('/').filter(Boolean);
+
+		// Build breadcrumb items with name and href
+		return segments.map((segment, index) => {
+			const href = '/' + segments.slice(0, index + 1).join('/');
+			return { name: segment, href };
+		});
+	});
 
 	$: if (browser) document.body.classList.toggle('noscroll', fullSizeImage);
 
@@ -48,9 +60,10 @@
 		inView(textEl, () => {
 			animate(textEl, { x: [100, 0], opacity: [0, 100] }, { duration: 0.7 });
 		});
-		onDestroy(() => {
-			window.removeEventListener('keydown', handleEscapeKey);
-		});
+	});
+
+	onDestroy(() => {
+		window.removeEventListener('keydown', handleEscapeKey);
 	});
 </script>
 
@@ -67,8 +80,19 @@
 	</div>
 {/if}
 <div class="px-4 md:px-48 min-h-lvh">
-	<div class="grid grid-cols-1 md:grid-cols-2 md:gap-8 pt-8">
-		<div bind:this={galleryEl} class="md:p-8">
+	<nav class="px-8 pt-8 pb-2 text-gray-500 text-sm font-medium" aria-label="Breadcrumb">
+		<ul class="flex">
+			<li><a href="/">Home</a></li>
+			{#each $breadcrumbs as crumb}
+				<li>
+					<span class="pl-1">/</span>
+					<a href={crumb.href}>{crumb.name}</a>
+				</li>
+			{/each}
+		</ul>
+	</nav>
+	<div class="grid grid-cols-1 md:grid-cols-2 md:gap-8">
+		<div bind:this={galleryEl} class="md:px-8">
 			<div class="relative w-full aspect-[16/9]">
 				<img
 					class="rounded-lg absolute inset-0 w-full h-full object-cover cursor-pointer"
