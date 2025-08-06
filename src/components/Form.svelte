@@ -29,7 +29,7 @@
 		>Nemas racun?</a
 	>
 	<div
-		class="px-3 py-2 border-2 bg-[#4285F4] hover:bg-[#4285F4]/90 rounded-lg focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50"
+		class="px-3 py-2 border-2 bg-[#4285F4] hover:bg-[#4285F4]/90 rounded-lg focus:ring-4 focus:outline-hidden focus:ring-[#4285F4]/50"
 	>
 		<button class="uppercase text-sm font-bold text-white">prijava</button>
 	</div>
@@ -37,7 +37,7 @@
 	<div class="px-6 sm:px-0 max-w-sm">
 		<button
 			type="button"
-			class="text-white w-full bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between mr-2 mb-2"
+			class="text-white w-full bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-hidden focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between mr-2 mb-2"
 			><svg
 				class="mr-2 -ml-1 w-4 h-4"
 				aria-hidden="true"

@@ -11,7 +11,6 @@
 			{
 				duration: 1.2,
 				repeat: Infinity,
-				delay: stagger(0.2),
 				ease: 'easeInOut'
 			}
 		);

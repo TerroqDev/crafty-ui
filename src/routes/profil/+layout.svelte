@@ -10,7 +10,7 @@
 </script>
 
 <div class="flex flex-col px-2 md:px-48 pt-8 h-full">
-	<div class="flex border p-4 rounded-lg shadow justify-between">
+	<div class="flex border p-4 rounded-lg shadow-sm justify-between">
 		<div>
 			<h1 class="text-lg md:text-xl text-gray-700 font-medium">{$user.user}</h1>
 			<h2 class="text-sm md:text-md text-yellow-500">{$user.email}</h2>
@@ -45,7 +45,7 @@
 		</div>
 	</div>
 	<div class="pt-8 justify-center flex flex-col align-middle items-center">
-		<ul class="flex rounded-lg shadow w-fit">
+		<ul class="flex rounded-lg shadow-sm w-fit">
 			{#each menuItemList as item, index}
 				<li class="">
 					<a

@@ -7,7 +7,7 @@
 <div class="flex flex-col w-full pt-8">
 	{#each data.products as product}
 		<div
-			class="border shadow rounded-lg text-gray-600 hover:text-yellow-500 p-4 mb-4 hover:shadow-lg transform transition ease-in duration-200"
+			class="border shadow-sm rounded-lg text-gray-600 hover:text-yellow-500 p-4 mb-4 hover:shadow-lg transform transition ease-in duration-200"
 		>
 			<div class="flex justify-between">
 				<a href="/profil/oglasi/{product.id}" class="font-bold">{product.name}</a>

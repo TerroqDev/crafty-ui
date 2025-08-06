@@ -36,7 +36,7 @@
 <div class="md:min-h-screen">
 	<FilterModal {showModal} />
 	<div class="flex">
-		<Filter />
+		<Filter products={products} />
 		<div bind:this={mainSection} class="w-full pb-4 px-4 md:pr-48">
 			<div class="flex justify-between pt-10">
 				<p class="text-md text-gray-500">{products.length} products</p>

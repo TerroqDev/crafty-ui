@@ -24,7 +24,7 @@
 	];
 </script>
 
-<div class="flex flex-col px-4 rounded-lg shadow mt-8 border">
+<div class="flex flex-col px-4 rounded-lg shadow-sm mt-8 border">
 	{#each profileSettings as setting}
 		<div class="flex w-full md:gap-24 py-4 border-b justify-between">
 			<div class="flex flex-col">

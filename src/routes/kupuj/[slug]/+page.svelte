@@ -93,7 +93,7 @@
 	</nav>
 	<div class="grid grid-cols-1 md:grid-cols-2 md:gap-8">
 		<div bind:this={galleryEl} class="md:px-8">
-			<div class="relative w-full aspect-[16/9]">
+			<div class="relative w-full aspect-video">
 				<img
 					class="rounded-lg absolute inset-0 w-full h-full object-cover cursor-pointer"
 					on:click={() => (fullSizeImage = true)}

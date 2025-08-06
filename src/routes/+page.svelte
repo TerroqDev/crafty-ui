@@ -145,7 +145,7 @@
 				name="text"
 				id="text"
 				placeholder="Pretraži"
-				class="form-input rounded border border-gray-600 p-4 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-14 focus:outline-none"
+				class="form-input rounded-sm border border-gray-600 p-4 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-14 focus:outline-hidden"
 			/>
 		</label>
 	</div>

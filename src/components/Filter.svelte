@@ -1,29 +1,37 @@
 <script>
 	import RangeSlider from 'svelte-range-slider-pips';
+    import { onMount } from 'svelte';
+
+    export let products;
 	let filters;
+    $: minPrice = products.length > 0
+		? Math.min(...products.map((/** @type {{ price: number }} */ product) => product.price))
+		: 0;
+    $: maxPrice = products.length > 0
+		? Math.max(...products.map((/** @type {{ price: number }} */ product) => product.price))
+		: 100;
+
+    $: values =  [minPrice, maxPrice]
 
 	const currency = new Intl.NumberFormat('de', { style: 'currency', currency: 'EUR' });
 	const formatter = (value) => currency.format(value);
 	let isPriceOpen = false;
 	let isSizeOpen = false;
 	let isColorOpen = false;
-	let minPrice = 0;
-	let maxPrice = 200;
-	let values = [];
+
+    onMount(() => {
+    })
 </script>
 
-<div bind:this={filters} class="hidden md:flex md:flex-col pt-8 min-w-52 px-4 ml-14">
+<div bind:this={filters} class="hidden md:flex md:flex-col pt-8 min-w-56 px-4 ml-14">
 	<h1 class="text-xl text-gray-600 mx-4 py-4 border-b border-gray-600 font-bold">Filter by</h1>
 	<div class="mx-4 pt-4">
 		<p class="text-gray-600 font-semibold flex justify-between">
 			Price <span class="cursor-pointer" on:click={() => (isPriceOpen = !isPriceOpen)}>
 				<div class="relative w-3 h-3 cursor-pointer group mt-2">
-					<!-- Vertical line -->
 					<div
 						class={`absolute top-0 left-1/2 w-[2px] h-full bg-gray-600 transform -translate-x-1/2 transition-transform duration-300 ease-out ${isPriceOpen ? 'rotate-90' : ''} `}
 					></div>
-
-					<!-- Horizontal line -->
 					<div
 						class={`absolute top-1/2 left-0 w-full h-[2px] bg-gray-600 transform -translate-y-1/2 transition-transform duration-300 ease-out ${isPriceOpen ? 'rotate-180' : ''} `}
 					></div>
@@ -31,9 +39,8 @@
 			</span>
 		</p>
 	</div>
-
 	<div
-		class={`px-2 transform transition-all duration-300 overflow-hidden ${isPriceOpen ? 'max-h-0 ' : 'max-h-40'} `}
+		class={`px-4 py-4 transform transition-all duration-300 overflow-hidden ${isPriceOpen ? 'max-h-0 ' : 'max-h-40'} `}
 	>
 		<RangeSlider
 			{formatter}
@@ -42,7 +49,7 @@
 			all="label"
 			min={minPrice}
 			max={maxPrice}
-			step={1}
+            rangeGapMin={100}
 			pipstep={50000}
 			bind:values
 		/>
