@@ -1,6 +1,6 @@
 <script>
-	export let data;
-	// TODO: klik na card za otvoriti oglas umjesto imena
+	let { data } = $props();
+	
 	// TODO: na hover promjeniti boju texta, hover same kartice, ne texta
 </script>
 

@@ -1,9 +1,12 @@
 <script>
+	import { preventDefault } from 'svelte/legacy';
+
 	/** @type {import('./$types').PageData} */
 	import { onMount } from 'svelte';
 
 	/** @type boolean */
-	$: editMode = true;
+	let editMode = $state(true);
+	
 
 	// FIXME: use hooks for auth, remove the login from the profile section
 	/**
@@ -86,4 +89,4 @@
 		</div>
 	</div>
 </div>
-<svelte:window on:keydown|preventDefault={exitEditMode} />
+<svelte:window onkeydown={preventDefault(exitEditMode)} />

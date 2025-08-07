@@ -18,7 +18,7 @@
 	<div class="flex flex-col justify-center h-full">
 		<h1 class="text-xl text-gray-600 mx-4 py-4 border-b border-gray-600 font-bold">Filter by</h1>
 		<div class="mx-4 pt-4">
-			<p class="text-gray-600 font-semibold flex justify-between">
+			<div class="text-gray-600 font-semibold flex justify-between">
 				Price <span class="cursor-pointer" on:click={() => (isPriceOpen = !isPriceOpen)}>
 					<div class="relative w-3 h-3 cursor-pointer group mt-2">
 						<!-- Vertical line -->
@@ -32,7 +32,7 @@
 						></div>
 					</div>
 				</span>
-			</p>
+			</div>
 		</div>
 
 		<div

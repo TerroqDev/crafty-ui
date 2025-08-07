@@ -1,4 +1,6 @@
 <script>
+	import { preventDefault } from 'svelte/legacy';
+
 	import { deserialize } from '$app/forms';
 
 	let editMode = false;
@@ -64,4 +66,4 @@
 		</div>
 	{/each}
 </div>
-<svelte:window on:keydown|preventDefault={exitEditMode} />
+<svelte:window onkeydown={preventDefault(exitEditMode)} />

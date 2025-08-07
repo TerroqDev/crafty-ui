@@ -32,6 +32,22 @@
 }
 
 .rangeSlider {
+    --slider-accent: #dbc53e;
+    --slider-accent-100: #dbc53e;
+    --slider-base: #99a2a2;
+    --slider-base-100: #b9c2c2;
+    --slider-bg: #d7dada;
+    --slider-fg: #3f3e4f;
+
+    --slider-dark-accent: #6070fc;
+    --slider-dark-accent-100: #7a7fab;
+    --slider-dark-base: #82809f;
+    --slider-dark-base-100: #595868;
+    --slider-dark-bg: #3f3e4f;
+    --slider-dark-fg: #d7dada;
+
+    --range-range: #dbc53e;
+    --range-handle-inactive:#dbc53e;
 	font-size: 0.6rem; /* default size */
 }
 

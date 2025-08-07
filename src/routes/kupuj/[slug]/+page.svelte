@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { browser } from '$app/environment';
 	import { animate, inView } from 'motion';
 	import { onDestroy, onMount } from 'svelte';
@@ -10,12 +12,18 @@
 	// TODO: image size set
 	// TODO: modal full size image - maybe add controls
 	// FIX: controls look like shit
-	// NOTE: check if flex col to middle everything will look better
+	
 
-	export let data;
+	/**
+	 * @typedef {Object} Props
+	 * @property {any} data - NOTE: check if flex col to middle everything will look better
+	 */
 
-	let imageCounter = 0;
-	let fullSizeImage = false;
+	/** @type {Props} */
+	let { data } = $props();
+
+	let imageCounter = $state(0);
+	let fullSizeImage = $state(false);
 
 	const breadcrumbs = derived(page, ($page) => {
 		const segments = $page.url.pathname.split('/').filter(Boolean);
@@ -27,7 +35,9 @@
 		});
 	});
 
-	$: if (browser) document.body.classList.toggle('noscroll', fullSizeImage);
+	run(() => {
+		if (browser) document.body.classList.toggle('noscroll', fullSizeImage);
+	});
 
 	function handleEscapeKey(event) {
 		if (event.key === 'Escape') {
@@ -47,11 +57,11 @@
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let galleryEl;
+	let galleryEl = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let textEl;
+	let textEl = $state();
 	onMount(() => {
 		window.addEventListener('keydown', handleEscapeKey);
 		inView(galleryEl, () => {
@@ -69,7 +79,7 @@
 
 {#if fullSizeImage}
 	<div
-		on:click={() => (fullSizeImage = false)}
+		onclick={() => (fullSizeImage = false)}
 		class="fixed overflow-hidden h-lvh inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center"
 	>
 		<img
@@ -96,11 +106,11 @@
 			<div class="relative w-full aspect-video">
 				<img
 					class="rounded-lg absolute inset-0 w-full h-full object-cover cursor-pointer"
-					on:click={() => (fullSizeImage = true)}
+					onclick={() => (fullSizeImage = true)}
 					src={data.product.images[imageCounter].image_url}
 				/>
 				<button
-					on:click={() => handleImageCounter(1)}
+					onclick={() => handleImageCounter(1)}
 					class="absolute rounded-full border border-gray-300 p-2 bg-gray-100 right-4 bottom-8 transition-all duration-300 ease-in hover:bg-gray-50"
 				>
 					<svg
@@ -119,7 +129,7 @@
 					</svg>
 				</button>
 				<button
-					on:click={() => handleImageCounter(0)}
+					onclick={() => handleImageCounter(0)}
 					class="absolute border border-gray-300 bg-gray-100 rounded-full p-2 right-16 bottom-8 transition-all duration-300 ease-in hover:bg-gray-50"
 				>
 					<svg
@@ -143,7 +153,7 @@
 					<div
 						transition:fade
 						class="w-20 h-16 mt-2 cursor-pointer relative"
-						on:click={() => (imageCounter = i)}
+						onclick={() => (imageCounter = i)}
 					>
 						<img
 							class="rounded-lg absolute inset-0 w-full h-full object-cover"

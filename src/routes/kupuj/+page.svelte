@@ -11,9 +11,22 @@
 	/**
 	 * @type {string | any[]}
 	 */
-	let products = [];
+	let products = $state([]);
+	let showModal = $state(false);
 
-	let showModal = false;
+    let minPrice = $derived(products.length > 0
+		? Math.min(...products.map((/** @type {{ price: number }} */ product) => product.price))
+		: 0);
+    let maxPrice = $derived(products.length > 0
+		? Math.max(...products.map((/** @type {{ price: number }} */ product) => product.price))
+		: 100);
+
+    let values = $state([]);
+
+    $effect(()=> {
+        console.log(values)
+    })
+   
 
 	async function fetchFroducts() {
 		const res = await fetch('/api/products');
@@ -36,12 +49,12 @@
 <div class="md:min-h-screen">
 	<FilterModal {showModal} />
 	<div class="flex">
-		<Filter products={products} />
+		<Filter  minPrice={minPrice} maxPrice={maxPrice} bind:values={values} />
 		<div bind:this={mainSection} class="w-full pb-4 px-4 md:pr-48">
 			<div class="flex justify-between pt-10">
 				<p class="text-md text-gray-500">{products.length} products</p>
 				<button
-					on:click={() => (showModal = !showModal)}
+					onclick={() => (showModal = !showModal)}
 					class="bg-white w-8 h-auto border rounded-lg p-1 md:hidden"
 				>
 					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"

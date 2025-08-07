@@ -1,11 +1,15 @@
 <script>
-	let isMenuOpen = false;
+	import { run } from 'svelte/legacy';
+
+	let isMenuOpen = $state(false);
 	import { browser } from '$app/environment';
 	import { animate } from 'motion';
 	import { user } from '../routes/store';
 	import { goto } from '$app/navigation';
 
-	$: if (browser) document.body.classList.toggle('noscroll', isMenuOpen);
+	run(() => {
+		if (browser) document.body.classList.toggle('noscroll', isMenuOpen);
+	});
 	// FIX: fix moj profil link going to prijava
 	/**
 	 * @type {import("motion").ElementOrSelector}
@@ -21,7 +25,7 @@
 	/**
 	 * @type {any[]}
 	 */
-	let navRefs = [];
+	let navRefs = $state([]);
 	const menuItemsLoggedOut = [
 		{ name: 'Kupuj', link: 'kupuj' },
 		{ name: 'Prijava', link: 'prijava' },
@@ -51,7 +55,7 @@
 
 <nav class="px-4 md:px-20 lg:px-48 bg-gray-800">
 	<div class="flex items-center justify-between w-full">
-		<a href="/" class="z-20" on:click={() => (isMenuOpen = false)}>
+		<a href="/" class="z-20" onclick={() => (isMenuOpen = false)}>
 			<svg
 				class="w-24 h-10"
 				width="759"
@@ -90,7 +94,7 @@
 		<button
 			name="Contact call to action"
 			class={`m-4 flex top-0 right-0 z-50 relative w-10 h-10 text-textcol focus:outline-hidden`}
-			on:click={toggleMenu}
+			onclick={toggleMenu}
 		>
 			<div class="absolute w-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
 				<span
@@ -125,7 +129,7 @@
 					<li bind:this={navRefs[index]} class="text-3xl p-4 w-full">
 						<a
 							class="hover:text-primary transition transform ease-in duration-300"
-							on:click={() => (isMenuOpen = false)}
+							onclick={() => (isMenuOpen = false)}
 							href="/{item.link}"
 						>
 							{item.name}
@@ -137,7 +141,7 @@
 					<li bind:this={navRefs[index]} class="text-3xl p-4 w-full">
 						<a
 							class="hover:text-primary transition transform ease-in duration-300"
-							on:click={() => (isMenuOpen = false)}
+							onclick={() => (isMenuOpen = false)}
 							href="/{item.link}"
 						>
 							{item.name}

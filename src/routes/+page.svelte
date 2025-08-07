@@ -6,40 +6,40 @@
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let heading;
+	let heading = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let searchBar;
+	let searchBar = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let tagHeading;
+	let tagHeading = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let tagList;
+	let tagList = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let tagButton;
+	let tagButton = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let subHeading;
+	let subHeading = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let craftedItHeading;
+	let craftedItHeading = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let craftedItSubheading;
+	let craftedItSubheading = $state();
 
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let craftedItButton;
+	let craftedItButton = $state();
 
 	onMount(() => {
 		inView(heading, () => {
@@ -214,7 +214,7 @@
 			<div class="text-center pt-8 pb-4 md:pt-20">
 				<button
 					bind:this={craftedItButton}
-					on:click={() => goto('/kupuj')}
+					onclick={() => goto('/kupuj')}
 					class="px-3 py-2 rounded-full border tracking-widest text-xl md:text-2xl bg-primary text-gray-50 font-bold min-w-80 hover:bg-primary/85 transition-all transform duration-300 ease-in"
 					>Shop Now</button
 				>

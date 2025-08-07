@@ -7,27 +7,27 @@
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let contactEl;
+	let contactEl = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let mailEl;
+	let mailEl = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let socialEl;
+	let socialEl = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let airplaneEl;
+	let airplaneEl = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let smallAirplaneEl;
+	let smallAirplaneEl = $state();
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let qaEl;
+	let qaEl = $state();
 
 	onMount(() => {
 		inView(contactEl, () => {

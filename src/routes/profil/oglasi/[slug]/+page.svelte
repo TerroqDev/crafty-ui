@@ -12,8 +12,8 @@
 			return { name: segment, href };
 		});
 	});
-	export let data;
-	// TODO: kreirati rutu koja ce editat oglas
+	let { data } = $props();
+	
 	// TODO: on klik uvecati sliku
 </script>
 
@@ -62,7 +62,7 @@
 		</div>
 	</div>
 	<div class="flex justify-end gap-2 pt-4">
-		<button on:click={() => goto('/profil/oglasi')} class="px-3 rounded-lg py-2 bg-gray-100"
+		<button onclick={() => goto('/profil/oglasi')} class="px-3 rounded-lg py-2 bg-gray-100"
 			>Odbaci</button
 		>
 		<button class="px-3 rounded-lg py-2 bg-yellow-500 text-white">Spremi</button>

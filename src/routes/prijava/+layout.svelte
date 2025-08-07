@@ -1,12 +1,16 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { user } from '../store';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import Form from '../../components/Form.svelte';
 
 	// TODO: make more components and reuse logic
 	// TODO: navigation inside profile section
-	$: href = $page.url.pathname;
-	$: console.log($user);
+	let href = $derived(page.url.pathname);
+	run(() => {
+		console.log($user);
+	});
 
 	async function logout() {
 		await fetch('/api/clear', { credentials: 'include' });

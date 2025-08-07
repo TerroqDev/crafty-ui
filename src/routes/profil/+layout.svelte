@@ -1,7 +1,14 @@
 <script>
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { user } from '../store';
-	$: href = $page.url.pathname;
+	/**
+	 * @typedef {Object} Props
+	 * @property {import('svelte').Snippet} [children]
+	 */
+
+	/** @type {Props} */
+	let { children } = $props();
+	let href = $derived(page.url.pathname);
 	// TODO: animations
 	const menuItemList = [
 		{ name: 'Moji oglasi', link: 'oglasi' },
@@ -56,5 +63,5 @@
 			{/each}
 		</ul>
 	</div>
-	<slot />
+	{@render children?.()}
 </div>

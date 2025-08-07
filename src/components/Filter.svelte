@@ -2,19 +2,10 @@
 	import RangeSlider from 'svelte-range-slider-pips';
     import { onMount } from 'svelte';
 
-    export let products;
+    let { minPrice, maxPrice, values = $bindable(), ...props } = $props();
 	let filters;
-    $: minPrice = products.length > 0
-		? Math.min(...products.map((/** @type {{ price: number }} */ product) => product.price))
-		: 0;
-    $: maxPrice = products.length > 0
-		? Math.max(...products.map((/** @type {{ price: number }} */ product) => product.price))
-		: 100;
 
-    $: values =  [minPrice, maxPrice]
-
-	const currency = new Intl.NumberFormat('de', { style: 'currency', currency: 'EUR' });
-	const formatter = (value) => currency.format(value);
+    values = [minPrice, maxPrice]
 	let isPriceOpen = false;
 	let isSizeOpen = false;
 	let isColorOpen = false;
@@ -26,7 +17,7 @@
 <div bind:this={filters} class="hidden md:flex md:flex-col pt-8 min-w-56 px-4 ml-14">
 	<h1 class="text-xl text-gray-600 mx-4 py-4 border-b border-gray-600 font-bold">Filter by</h1>
 	<div class="mx-4 pt-4">
-		<p class="text-gray-600 font-semibold flex justify-between">
+		<div class="text-gray-600 font-semibold flex justify-between">
 			Price <span class="cursor-pointer" on:click={() => (isPriceOpen = !isPriceOpen)}>
 				<div class="relative w-3 h-3 cursor-pointer group mt-2">
 					<div
@@ -37,26 +28,27 @@
 					></div>
 				</div>
 			</span>
-		</p>
+		</div>
 	</div>
 	<div
 		class={`px-4 py-4 transform transition-all duration-300 overflow-hidden ${isPriceOpen ? 'max-h-0 ' : 'max-h-40'} `}
 	>
 		<RangeSlider
-			{formatter}
 			range
-			pips
-			all="label"
+            pips
+            first="label"
+            last="label"
+            suffix="€"
+            rangeFloat
 			min={minPrice}
 			max={maxPrice}
             rangeGapMin={100}
-			pipstep={50000}
 			bind:values
 		/>
 	</div>
 	<hr class="bg-gray-600 mx-4 mt-4" />
 	<div class="mx-4 pt-4">
-		<p class="text-gray-600 font-semibold flex justify-between">
+		<div class="text-gray-600 font-semibold flex justify-between">
 			Size <span class="cursor-pointer" on:click={() => (isSizeOpen = !isSizeOpen)}>
 				<div class="relative w-3 h-3 cursor-pointer group mt-2">
 					<!-- Vertical line -->
@@ -70,7 +62,7 @@
 					></div>
 				</div>
 			</span>
-		</p>
+		</div>
 	</div>
 	<div
 		class={`px-4 transform transition-all duration-300 overflow-hidden ${isSizeOpen ? 'max-h-0 ' : 'max-h-40'} `}
@@ -90,7 +82,7 @@
 	</div>
 	<hr class="bg-gray-600 mx-4 mt-4" />
 	<div class="mx-4 pt-4">
-		<p class="text-gray-600 font-semibold flex justify-between">
+		<div class="text-gray-600 font-semibold flex justify-between">
 			Color <span class="cursor-pointer" on:click={() => (isColorOpen = !isColorOpen)}>
 				<div class="relative w-3 h-3 cursor-pointer group mt-2">
 					<!-- Vertical line -->
@@ -104,7 +96,7 @@
 					></div>
 				</div>
 			</span>
-		</p>
+		</div>
 	</div>
 	<div
 		class={`px-4 transform transition-all duration-300 overflow-hidden ${isColorOpen ? 'max-h-0 ' : 'max-h-40'} `}

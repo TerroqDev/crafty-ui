@@ -5,11 +5,11 @@
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let questionEl = [];
+	let questionEl = $state([]);
 	/**
 	 * @type {import("motion").ElementOrSelector}
 	 */
-	let faq;
+	let faq = $state();
 	onMount(() => {
 		inView(faq, () => {
 			animate(faq, { opacity: [0, 1] }, { duration: 0.7, delay: 0.1 });
@@ -20,7 +20,7 @@
 			});
 		}
 	});
-	let questionAndAnswers = [
+	let questionAndAnswers = $state([
 		{
 			question: 'Kako postaviti oglas na vašu stranicu?',
 			answer:
@@ -69,7 +69,7 @@
 				'Naš korisnički tim stoji vam na raspolaganju. Pošaljite nam poruku putem odjeljka "Kontakt podrška" ili nas nazovite na dostupne brojeve. Rado ćemo vam pomoći!',
 			isOpen: false
 		}
-	];
+	]);
 </script>
 
 <div class="px-4 md:px-48 min-h-screen pb-8">
@@ -78,7 +78,7 @@
 		<div bind:this={questionEl[i]} class="pt-4">
 			<button
 				class="flex w-full justify-between"
-				on:click={() => (question.isOpen = !question.isOpen)}
+				onclick={() => (question.isOpen = !question.isOpen)}
 			>
 				<h1 class="text-2xl text-gray-600 font-bold py-4">{question.question}</h1>
 				<svg

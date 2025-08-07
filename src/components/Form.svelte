@@ -1,15 +1,19 @@
 <script>
-	import { page } from '$app/stores';
+	import { run } from 'svelte/legacy';
+
+	import { page } from '$app/state';
 	import { user } from '../routes/store';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 
-	$: errorMessage = $page.form?.errors?.message;
+	let errorMessage = $derived(page.form?.errors?.message);
 
-	$: if ($page.form?.user) {
-		user.set({ user: $page.form.user, email: $page.form.email });
-		goto('/');
-	}
+	run(() => {
+		if (page.form?.user) {
+			user.set({ user: page.form.user, email: page.form.email });
+			goto('/');
+		}
+	});
 </script>
 
 <form method="post" use:enhance class="flex flex-col justify-center items-center gap-4">
